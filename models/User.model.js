@@ -2,6 +2,10 @@ const { Schema, model } = require('mongoose');
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const userSchema = new Schema({
+	name: {
+		type: String,
+		required: true,
+	},
 	username: {
 		type: String,
 		required: true,
@@ -13,9 +17,15 @@ const userSchema = new Schema({
 	},
 	email: {
 		type: String,
+		unique: true,
 		required: true
 	},
-	// favorites: [{ type: Schema.Types.ObjectId, ref: 'Room', default: [] }]
+	favourites: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: "favourites"
+		}
+	]
 });
 
 const User = model('User', userSchema);
