@@ -16,14 +16,20 @@ Social media sign up
 Dynamic search
 Groups
 ## Routes
-
-
-| Name | Method  | Endpoint  | Description  | Body  | Redirects |
-|----|---|---|---|---| --- |
-|    |   |   |   |   | --- |
-|    |   |   |   |   | --- |
-|    |   |   |   |   | --- |
-
+| Name    | Method | Endpoint | Description                                          | Body                         | Redirects  |
+|---------|--------|----------|------------------------------------------------------|------------------------------|------------|
+| Login   | GET    | /        | Login page                                           |                              |            |
+| Login   | POST   | /Library | The page to search for pies                          | username,password            | library    |
+| Sign-Up | GET    | /Sign-up | Sign up page                                         |                              | library    |
+| Sign-Up | POST   | /Sign-up | When you click the sign-up                           | username,email,name,password |            |
+| Feed    | GET    | /Feed    | News feed style page for seeing posts                |                              |            |
+| Feed    | GET    | /Feed    | Like a post                                          |                              |            |
+| Feed    | POST   | /Feed    | Comment on a post                                    |                              |            |
+| Feed    | POST   | /Feed    | Create a post (recipe or photo)                      |                              |            |
+| Library | GET    | /Library | Page that displays POTD, and search bar plus filters |                              |            |
+| Library | GET    | /Library | Favourite a POTD                                     |                              |            |
+| Library | POST   | /Library | Searches the API                                     |                              | Search/:id |
+|         |        |          |                                                      |                              |            |
 ## Models
 ```
 const { Schema, model } = require(‘mongoose’);
