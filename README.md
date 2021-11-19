@@ -18,7 +18,7 @@ Groups
 ## Routes
 | Name | Method | Endpoint | Description | Body | Redirects |
 | --- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |
-| Login| GET | / | See the login page |  |  |
+| Login| GET | / | See the login page | --- | --- |
 
 ## Models
 ```
