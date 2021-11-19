@@ -16,9 +16,9 @@ Social media sign up
 Dynamic search
 Groups
 ## Routes
-Name | Method | Endpoint | Description | Body | Redirects
---- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |
-Login| GET | / | See the login page | 
+| Name | Method | Endpoint | Description | Body | Redirects |
+| --- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |
+| Login| GET | / | See the login page | 
 
 ## Models
 ```
