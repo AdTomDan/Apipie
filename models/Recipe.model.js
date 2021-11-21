@@ -10,19 +10,26 @@ const recipeSchema = new Schema({
 		type: String,
 		required: true,
 	},
-	taste: {
-		type: Array,
-		items: {
-			"type": String,
-			"enum": [Sweet, Salty, Sour, Bitter, Savory, Fatty]
-		}
+	prepTime: {
+		type: Number,
+		required: true
 	},
-	photo: {
-		type: String
+	cookingTime: {
+		type: Number,
+		required: true,
+	},
+	difficulty: {
+		"type": String,
+		"enum": ["Easy", "Intermediate", "Advanced"]
 	},
 	ingredients: [{
-		type: String
-	}]
+		type: String,
+		required: true,
+	}],
+	steps: [{
+		type: String,
+		required: true,
+	}],
 });
 
 const Recipe = model('Recipe', recipeSchema);
