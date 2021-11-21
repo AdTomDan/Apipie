@@ -12,7 +12,7 @@ const commentSchema = new Schema(
             ref: "user"
         },
     },
-        {timestamps: true}
+    {timestamps: true}
 	)
 
 const Comment = model('Comment', commentSchema);

@@ -19,6 +19,9 @@ const userSchema = new Schema({
 		unique: true,
 		required: true
 	},
+	profilePhoto: {
+		type: String,
+	},
 	favourites: [
 		{
 			type: Schema.Types.ObjectId,

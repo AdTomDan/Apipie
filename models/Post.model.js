@@ -6,17 +6,20 @@ const postSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: "user"
 	},
-	image: {type: String
+	image: {
+		type: String
     },
     likes: [{
 		type: Schema.Types.ObjectId,
 		ref: "user"
 	}],
+	likeCount: {type: Number},
     comments: [{
         type: Schema.Types.ObjectId,
 		ref: "comment"
-    }]
-});
+    }]},
+	{timestamps: true}
+);
 
 const Post = model('Post', postSchema);
 
