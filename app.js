@@ -3,8 +3,12 @@ require('dotenv').config()
 var createError = require('http-errors');
 var express = require('express');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
 
 var app = express();
 
@@ -12,17 +16,39 @@ var app = express();
 require('./config/db')
 require('./config/global')(app)
 
+// Cookies and sessions
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: {maxAge: 24 * 60 * 60 * 1000},
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGODB_URI,
+    ttl: 24 * 60 * 60
+  })
+}))
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Use of routes
+const indexRouter = require('./routes/index.routes');
 const authRouter = require('./routes/auth.routes');
 const libraryRouter = require('./routes/library.routes');
+const feedRouter = require('./routes/feed.routes');
 
 app.use('/', indexRouter);
 app.use("/auth",authRouter)
-app.use("/library",authRouter)
+app.use("/library",libraryRouter)
+app.use("/feed",feedRouter)
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+// app.use(function(req, res, next) {
+//   next(createError(404));
+// });
 
 // error handler
 app.use(function(err, req, res, next) {

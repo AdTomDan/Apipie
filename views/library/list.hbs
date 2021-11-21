@@ -1,0 +1,10 @@
+<h1>List (ie search results)</h1>
+
+<ul class="recipe-list">
+  {{#each recipe}}
+    <li>
+        {{this.name}}
+        <a href="/details/{{this.id}}">See details</a>
+    <li>
+  {{/each}}
+</ul>

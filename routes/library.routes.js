@@ -7,15 +7,17 @@ const Recipe =  require("../models/Recipe.model")
 
 router.route("/details/:id")
 .get((req,res)=>{
-    res.render("details")
+    res.render("library/details")
 })
 
 router.route("/list")
 .get((req,res)=>{
-    res.render("list")
+    res.render("library/list")
 })
 
 router.route("/")
 .get((req,res)=>{
-    res.render("library")
+    res.render("library/library")
 })
+
+module.exports = router;
