@@ -1,1 +1,16 @@
 <h1>Details (ie the details of a recipe that you've searched for)</h1>
+
+<div>
+    <p>{{this.name}}</p>
+    <hr>
+    <p>Author: {{this.author.username}}</p>
+    <h3>Ingredients:</h3>
+    <ul>
+        {{#each ingredients}}
+        <li>
+            {{this}}
+            </li>
+        {{/each}}
+
+    </ul>
+</div>

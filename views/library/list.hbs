@@ -6,8 +6,8 @@
   {{#each recipes}}
     <li>
         {{this.name}}
-        Author: {{this.author}}
-        <a href="/details/{{this.id}}">See details</a>
+        Author: {{this.author.username}}
+        <a href="/library/details/{{this.id}}">See details</a>
     </li>
   {{/each}}
 </ul>

@@ -6,8 +6,15 @@ const Api = require("../apis/api")
 const Recipe =  require("../models/Recipe.model")
 
 router.route("/details/:id")
-.get((req,res)=>{
-    res.render("library/details")
+.get(async(req,res)=>{
+    try {
+        const id = req.params.id
+        const recipe = await Recipe.findById(id).populate("author","username")
+        console.log("recipe", recipe)
+        res.render("library/details",recipe)
+    } catch (err) {
+        console.log(err)
+    }
 })
 
 router.route("/list")
