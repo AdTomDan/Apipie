@@ -3,7 +3,7 @@
     <hr>
     <p>Author: {{this.author.username}}</p>
     <img src="{{this.image}}">
-    <details><summary>Ingredients</summary>
+    <details open><summary>Ingredients</summary>
     <ul>
         {{#each ingredients}}
         <li>
@@ -13,4 +13,16 @@
 
     </ul>
     </details>
+    <details open><summary>Steps</summary>
+    <ol>
+        {{#each steps}}
+        <li>
+            {{this}}
+            </li>
+        {{/each}}
+
+    </ol>
+    </details>
 </div>
+
+<a href="/library">Back</a>
