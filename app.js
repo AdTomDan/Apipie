@@ -12,9 +12,12 @@ var app = express();
 require('./config/db')
 require('./config/global')(app)
 
+const authRouter = require('./routes/auth.routes');
+const libraryRouter = require('./routes/library.routes');
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use("/auth",authRouter)
+app.use("/library",authRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
