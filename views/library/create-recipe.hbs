@@ -1,0 +1,30 @@
+<h1>Create New Recipe</h1>
+
+<form action="/auth/signup" method="POST">
+
+  <label for="name">Name: </label>
+  <input type="text" name="name" placeholder="Pepito" required>
+
+  <label for="prepTime">Prep Time: </label>
+  <input type="number" name="prepTime" placeholder="Minutes" required>
+
+  <label for="cookTime">Cook Time: </label>
+  <input type="number" name="cookTime" placeholder="Minutes" required>
+
+  <label for="difficulty">Difficulty:</label>
+
+  <select name="difficulty" id="difficulty">
+    <option value="easy">Easy</option>
+    <option value="intermediate">Intermediate</option>
+    <option value="advanced">Advanced</option>
+  </select>
+  
+  <label for="ingredients">Ingredients: </label>
+  <input type="text" name="ingredients" placeholder="ingredients" required>
+  
+  <button type="submit">Sign up</button>
+</form>
+
+{{#if errorMessage}}
+  <p>{{errorMessage}}</p>
+{{/if}}
