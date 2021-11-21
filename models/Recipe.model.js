@@ -10,18 +10,9 @@ const recipeSchema = new Schema({
 		type: String,
 		required: true,
 	},
-<<<<<<< HEAD
-	taste: {
-		type: Array,
-		items: {
-			"type": String,
-			"enum": ["Sweet", "Salty", "Sour", "Bitter", "Savory", "Fatty"]
-		}
-=======
 	prepTime: {
 		type: Number,
 		required: true
->>>>>>> 7abe848377e41192a0de1242ef7ef719e85cebca
 	},
 	cookingTime: {
 		type: Number,

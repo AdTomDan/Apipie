@@ -57,7 +57,7 @@ router.route("/signup") //SIGN UP
           const hashedPwd = bcrypt.hashSync(password,salt)
           
           const newUser = await User.create({name,surname,username,email,password:hashedPwd})
-          res.redirect("/welcome", newUser)
+          res.redirect("/auth", newUser)
       } catch (err){
         res.render("auth/signup",{errorMessage: "Database broken"})
       }

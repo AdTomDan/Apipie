@@ -1,1 +1,32 @@
 <h1>Library</h1>
+
+<div>
+<button type="submit">PIE OF THE DAY</button> 
+</div>
+
+<form action="/library" method="POST">
+
+  <label for="search"></label>
+  <input type="text" name="search" placeholder="Search by keywords" required>
+  <button type="submit">🔎</button>
+
+</form>
+
+{{#if errorMessage}}
+  <p>{{errorMessage}}</p>
+{{/if}}
+
+    <div>
+        <button type="submit">Sweet</button> 
+        <button type="submit">Savory</button> 
+    </div>
+<hr>
+    <div>
+        <button type="submit">Dairy-free</button> 
+        <button type="submit">Gluten-free</button> 
+    </div>
+<hr>
+    <div>
+        <button type="submit">Vegetarian</button> 
+        <button type="submit">Vegan</button> 
+    </div>

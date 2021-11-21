@@ -19,5 +19,15 @@ router.route("/")
 .get((req,res)=>{
     res.render("library/library")
 })
+.post(async(req,res)=>{
+    try {
+        const {search} = req.body
+        const recipes = await Recipe.find({name: {$regex: search}}).populate("author", "username")
+        console.log("our search result: ",recipes)
+        res.render("library/list", {recipes})
+    } catch (err) {
+        console.log(err)
+    }
+})
 
 module.exports = router;
