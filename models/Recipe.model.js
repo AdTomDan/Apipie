@@ -4,7 +4,7 @@ const { Schema, model } = require('mongoose');
 const recipeSchema = new Schema({
 	author: {
 		type: Schema.Types.ObjectId,
-		ref: "user"
+		ref: "User"
 	},
 	name: {
 		type: String,
