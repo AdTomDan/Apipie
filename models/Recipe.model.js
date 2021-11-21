@@ -14,7 +14,7 @@ const recipeSchema = new Schema({
 		type: Array,
 		items: {
 			"type": String,
-			"enum": [Sweet, Salty, Sour, Bitter, Savory, Fatty]
+			"enum": ["Sweet", "Salty", "Sour", "Bitter", "Savory", "Fatty"]
 		}
 	},
 	photo: {

@@ -1,0 +1,25 @@
+<h1>this is the signup page</h1>
+
+<form action="/auth/signup" method="POST">
+
+  <label for="name">Name: </label>
+  <input type="text" name="name" placeholder="Pepito" required>
+
+  <label for="surname">Surname: </label>
+  <input type="text" name="surname" placeholder="de los Palotes" required>
+
+  <label for="username">Username: </label>
+  <input type="text" name="username" placeholder="pepipalotes" required>
+
+  <label for="email">Email: </label>
+  <input type="email" name="email" placeholder="example@example.com" required>
+
+  <label for="password">Password: </label>
+  <input type="password" name="password" id="password" placeholder="🔒" required>
+  
+  <button type="submit">Sign up</button>
+</form>
+
+{{#if errorMessage}}
+  <p>{{errorMessage}}</p>
+{{/if}}
