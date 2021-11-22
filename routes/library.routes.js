@@ -29,7 +29,7 @@ router.route("/")
 .post(async(req,res)=>{
     try {
         const {search} = req.body
-        const recipes = await Recipe.find({name: {$regex: search}}).populate("author", "username")
+        const recipes = await Recipe.find({name:{$regex : search, $options : "i"}}).populate("author", "username")
         console.log("our search result: ",recipes)
         res.render("library/list", {recipes})
     } catch (err) {
