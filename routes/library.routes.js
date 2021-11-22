@@ -4,6 +4,7 @@ var router = express.Router();
 const User = require("../models/User.model");
 const Api = require("../apis/api");
 const Recipe = require("../models/Recipe.model");
+const { compareSync } = require("bcrypt");
 
 router.route("/details/:id").get(async (req, res) => {
   try {
@@ -24,8 +25,10 @@ router.route("/list").get((req, res) => {
 
 router
   .route("/")
-  .get((req, res) => {
-    res.render("library/library");
+  .get( async (req, res) => {
+    const randomRecipe = await Recipe.aggregate([{ $sample: { size: 1 } }]);
+    console.log(randomRecipe);
+    res.render("library/library", randomRecipe[0]);
   })
   .post(async (req, res) => {
     try {
