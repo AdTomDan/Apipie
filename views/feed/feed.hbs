@@ -19,12 +19,28 @@
         <h4>{{user.username}}</h4>
         <i>{{createdAt}}</i>
         <p>{{text}}</p>
+        {{#if image}}
         <br>    
         <img src="{{image}}" width="100px" height="100px">
+        {{/if}}
         <br>
         <a href="/feed/post/like/{{_id}}">&#128151</a> {{likeCount}}
         <br>
         <p>Likes:{{#each likes}} {{this.username}} {{/each}}</p>
+        <br>
+        <p>Comments: </p>
+        <ul>
+            {{#each comments}}
+                <li>{{this.content}} - {{this.author.name}}</li>
+            {{/each}}
+        </ul>
+        <br>
+        <form action="/feed/post/comment/{{_id}}" method="POST" style="border-style: dashed;">
+            <label for="content">Comment: </label>
+            <input type="text" name="content" placeholder="Comment">
+            <br>
+            <button type="submit">Post Comment</button>
+        </form>
     </div>
   {{/each}}
 </div>
