@@ -30,6 +30,10 @@ const recipeSchema = new Schema({
 		type: String,
 		required: true,
 	}],
+	imgUrl: {
+		type: String, 
+		default: 'https://thecrites.com/sites/all/modules/cookbook/theme/images/default-recipe-big.png'
+	}
 });
 
 const Recipe = model('Recipe', recipeSchema);

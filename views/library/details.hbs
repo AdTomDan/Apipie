@@ -23,12 +23,14 @@
 
     </ol>
     </details>
+    <hr>
+    {{#if showDelete}}
+    <a href="/library/delete/{{recipe._id}}">Delete Pie</a>
+    {{/if}}
 </div>
-
+<hr>
 {{#if showEdit}}
 <a href="/library/edit/{{recipe._id}}">Edit Pie</a>
 {{/if}}
-
-
-
+<hr>
 <a href="/library">Back</a>
