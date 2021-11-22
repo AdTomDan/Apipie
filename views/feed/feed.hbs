@@ -1,4 +1,4 @@
-<h1>Feed</h1>
+<h1>{{currentUser.name}}'s Feed</h1>
 <p>Create new post</p>
 <form action="/feed/post" method="POST" style="border-style: dashed;">
     <label for="text">Text: </label>
@@ -12,11 +12,18 @@
 
 <div class="allPosts">
     {{#each allPosts}}
-    <h4>{{user.username}}</h4>
-    <p>{{text}}</p>
-    <br>    
-    <img src="{{image}}" width="100px" height="100px">
+    <div class="post" style="border-style: solid; margin:5px; padding: 5px">
+        <h4>{{user.username}}</h4>
+        <i>{{createdAt}}</i>
+        <p>{{text}}</p>
+        <br>    
+        <img src="{{image}}" width="100px" height="100px">
+        <br>
+        <a href="/feed/post/like/{{_id}}">&#128151</a>
+        <br>
+        <p>Likes:{{#each likes}} {{this.username}} {{/each}}</p>
+    </div>
   {{/each}}
 </div>
 
-<a href="/library">Back</a>
+<a href="/welcome">Back</a>
