@@ -17,13 +17,16 @@ router.route("/post/like/:id")
 
     if (postToBeLiked.likes.length === 0) {
         let likedPost = await Post.findByIdAndUpdate(id, {$push:{likes:currentUser._id}})
+        let likedCount = await Post.findByIdAndUpdate(id, {$inc:{likeCount:1}})
         res.redirect("/feed")
     }
     else if (postToBeLiked.likes.includes(currentUser._id)) {
         let unlikedPost = await Post.findByIdAndUpdate(id, {$pull:{likes:currentUser._id}})
+        let likedCount = await Post.findByIdAndUpdate(id, {$inc:{likeCount:-1}})
         res.redirect("/feed")
     } else {
         let likedPost = await Post.findByIdAndUpdate(id,{$push:{likes:currentUser._id}})
+        let likedCount = await Post.findByIdAndUpdate(id, {$inc:{likeCount:1}})
         res.redirect("/feed")
     }
     } catch (err) {

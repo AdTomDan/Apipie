@@ -27,6 +27,8 @@ router.route("/profile/edit/:id")
       }
     })
     req.session.name = username
+    req.session.loggedInUser = updateUser
+    req.session.id = req.params.id
     res.redirect(`/profile/${req.params.id}`)
   }
   catch (err) {

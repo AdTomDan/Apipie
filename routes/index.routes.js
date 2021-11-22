@@ -31,8 +31,9 @@ router.route("/profile/:id")
 
 /* GET home page. */
 router.route("/")
-.get((req, res)=> {
-  res.render("home/welcome")
+.get(isLoggedIn,(req, res)=> {
+  const name = req.session.name
+  res.render("home/welcome",{name})
 })
 
 // Log out
