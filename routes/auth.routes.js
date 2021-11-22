@@ -41,27 +41,24 @@ router.route("/") // LOGIN
 })
 
 router.route("/signup") //SIGN UP
-.get((req,res)=>{
+.get( (req,res)=>{
     res.render("auth/signup")
 })
-.post((req,res)=>{
+.post( async (req,res)=>{
+  try{
     const {name,surname,username,email, password} = req.body
     if(!name || !surname || !username|| !email || !password) res.render('auth/signup')
-
-    User.findOne({username})
-    .then(async(user)=>{
-      try {
-      if(user) res.render('auth/signup',{errorMessage:"User exists."})
+    const user = await User.findOne({username}) 
+    if(user) res.render('auth/signup',{errorMessage:"User exists."})
           
-          const salt = bcrypt.genSaltSync(saltRound)
-          const hashedPwd = bcrypt.hashSync(password,salt)
-          
-          const newUser = await User.create({name,surname,username,email,password:hashedPwd})
-          res.redirect("/auth", newUser)
-      } catch (err){
-        res.render("auth/signup",{errorMessage: "Database broken"})
-      }
-    })
+    const salt = bcrypt.genSaltSync(saltRound)
+    const hashedPwd = bcrypt.hashSync(password,salt)     
+    const newUser = await User.create({name,surname,username,email,password:hashedPwd})
+    res.redirect("/auth")
+  }
+  catch (err){
+    res.render("auth/signup",{errorMessage: "Database broken"})
+    }
   })
 
 module.exports = router;
