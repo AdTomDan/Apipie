@@ -1,0 +1,35 @@
+<h1>Edit {{this.name}}</h1>
+
+<form action="/library/edit/{{_id}}" method="POST">
+
+  <label for="name">Name: </label>
+  <input type="text" name="name" value="{{name}}" required>
+  <br>
+  <label for="prepTime">Prep Time: </label>
+  <input type="number" name="prepTime" value="{{prepTime}}" required>
+  <br>
+  <label for="cookingTime">Cooking Time: </label>
+  <input type="number" name="cookingTime" value="{{cookingTime}}" required>
+  <br>
+  <label for="difficulty">Difficulty:</label>
+  <br>
+  <select name="difficulty" id="difficulty" value="{{difficulty}}">
+    <option value="Easy">Easy</option>
+    <option value="Intermediate">Intermediate</option>
+    <option value="Advanced">Advanced</option>
+  </select>
+  <br>
+  <label for="ingredients">Ingredients: </label>
+  <input type="text" name="ingredients" value="{{ingredients}}" required>
+  <br>
+  <label for="steps">Steps: </label>
+  <input type="text" name="steps" value="{{steps}}" required>
+  <br>
+  <button type="submit">Update details</button>
+</form>
+
+<a href="/library">Back</a>
+
+{{#if errorMessage}}
+  <p>{{errorMessage}}</p>
+{{/if}}

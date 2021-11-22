@@ -1,11 +1,11 @@
 <div>
-    <p>{{this.name}}</p>
+    <p>{{recipe.name}}</p>
     <hr>
-    <p>Author: {{this.author.username}}</p>
-    <img src="{{this.image}}">
+    <p>Author: {{recipe.author.username}}</p>
+    <img src="{{recipe.image}}">
     <details open><summary>Ingredients</summary>
     <ul>
-        {{#each ingredients}}
+        {{#each recipe.ingredients}}
         <li>
             {{this}}
             </li>
@@ -15,7 +15,7 @@
     </details>
     <details open><summary>Steps</summary>
     <ol>
-        {{#each steps}}
+        {{#each recipe.steps}}
         <li>
             {{this}}
             </li>
@@ -24,5 +24,11 @@
     </ol>
     </details>
 </div>
+
+{{#if showEdit}}
+<a href="/library/edit/{{recipe._id}}">Edit Pie</a>
+{{/if}}
+
+
 
 <a href="/library">Back</a>
