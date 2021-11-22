@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+const fileUploader = require("../config/cloudinary")
+
 const User = require("../models/User.model")
 const Post = require("../models/Post.model")
 
@@ -35,7 +37,7 @@ router.route("/post/like/:id")
 })
 
 router.route("/post")
-.post(async(req,res)=>{
+.post(fileUploader.single("imgUrl"), async(req,res)=>{
     try {
         const {text,image} = req.body
         

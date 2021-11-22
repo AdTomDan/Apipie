@@ -50,7 +50,7 @@ router.route("/signup") //SIGN UP
     if(!name || !surname || !username|| !email || !password) res.render('auth/signup')
     const user = await User.findOne({username}) 
     if(user) res.render('auth/signup',{errorMessage:"User exists."})
-          
+         // We can put here the extra validators to make a safe password 
     const salt = bcrypt.genSaltSync(saltRound)
     const hashedPwd = bcrypt.hashSync(password,salt)     
     const newUser = await User.create({name,surname,username,email,password:hashedPwd})

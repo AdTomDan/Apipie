@@ -1,8 +1,11 @@
 var express = require('express');
 var router = express.Router();
+const saltRound = 5;
+const bcrypt = require('bcrypt');
+
+const fileUploader = require("../config/cloudinary")
 
 const User = require ("../models/User.model")
-
 
 // Edit profile
 router.route("/profile/edit/:id")
@@ -16,19 +19,17 @@ router.route("/profile/edit/:id")
     console.log(err)
   }
 })
-.post( async (req, res) => {
+.post(fileUploader.single("imgUrl"), async (req, res) => {
   try{
     const {name, surname, username, email, password} = req.body;
-    const updateUser = await User.findByIdAndUpdate(req.params.id, {name, surname, username, email, password}, function (err, user){
-      if (err) {
-        console.log(err)
-      } else {
-        console.log(user)
-      }
-    })
+    const salt = bcrypt.genSaltSync(saltRound)
+    const hashedPwd = bcrypt.hashSync(password,salt)  
+    const updateUser = await User.findByIdAndUpdate(req.params.id, {name, surname, username, email, password: hashedPwd})
+
     req.session.name = username
     req.session.loggedInUser = updateUser
     req.session.id = req.params.id
+
     res.redirect(`/profile/${req.params.id}`)
   }
   catch (err) {
