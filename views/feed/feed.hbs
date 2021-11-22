@@ -3,23 +3,20 @@
 <form action="/feed/post" method="POST" style="border-style: dashed;">
     <label for="text">Text: </label>
     <input type="text" name="text" placeholder="Text">
-    <label for="name">Photo: </label>
-    <input type="text" name="photo" placeholder="Image Link">
+    <label for="image">Image: </label>
+    <input type="text" name="image" placeholder="Image Link">
     <br>
     <button type="submit">Create</button>
 </form>
 <h3>Posts:</h3>
 
-<!--
-<ul>
-  {{#each recipes}}
-    <li>
-        {{this.name}}
-        Author: {{this.author.username}}
-        <a href="/library/details/{{this.id}}">See details</a>
-    </li>
+<div class="allPosts">
+    {{#each allPosts}}
+    <h4>{{user.username}}</h4>
+    <p>{{text}}</p>
+    <br>    
+    <img src="{{image}}" width="100px" height="100px">
   {{/each}}
-</ul>
--->
+</div>
 
 <a href="/library">Back</a>

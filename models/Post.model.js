@@ -4,7 +4,7 @@ const { Schema, model } = require('mongoose');
 const postSchema = new Schema({
 	user: {
 		type: Schema.Types.ObjectId,
-		ref: "user"
+		ref: "User"
 	},
 	image: {
 		type: String
@@ -14,12 +14,12 @@ const postSchema = new Schema({
 	},
     likes: [{
 		type: Schema.Types.ObjectId,
-		ref: "user"
+		ref: "User"
 	}],
 	likeCount: {type: Number},
     comments: [{
         type: Schema.Types.ObjectId,
-		ref: "comment"
+		ref: "Comment"
     }]},
 	{timestamps: true}
 );
