@@ -45,20 +45,6 @@ router.route("/post/comment/:id")
     }
 })
 
-router.route("/post")
-.post(fileUploader.single("imgUrl"), async(req,res)=>{
-    try {
-        const {text,image} = req.body
-        
-        const newPost = await (await Post.create({user: req.session._id,text,image,likes:[],likeCount:0,comments:[]}))
-        const allPosts = await Post.find().populate("user", "username").populate("likes", "username").sort({'createdAt': -1})
-        const currentUser = req.session.loggedInUser
-        res.render("feed/feed",{allPosts, currentUser})
-    } catch (err) {
-        console.log(err)
-    }
-})
-
 router.route("/")
 .get(async(req,res)=>{
     const allPosts = await Post.find().populate("user", "username").populate("likes", "username").populate({ 
@@ -69,9 +55,20 @@ router.route("/")
             model: 'User'
         }}).sort({'createdAt': -1})
     
-    const currentUser = req.session.loggedInUser
-    console.log("all Posts ", allPosts[0].comments)
+    const currentUser = await User.findById(req.session.loggedInUser._id)
     res.render("feed/feed",{allPosts, currentUser})
+})
+.post(fileUploader.single("imgUrl"), async(req,res)=>{
+    try {
+        const {text,image} = req.body
+        
+        const newPost = await (await Post.create({user: req.session._id,text,image,likes:[],likeCount:0,comments:[]}))
+        const allPosts = await Post.find().populate("user", "username").populate("likes", "username").sort({'createdAt': -1})
+        let currentUser = req.session.loggedInUser;
+        res.render("feed/feed",{allPosts, currentUser})
+    } catch (err) {
+        console.log(err)
+    }
 })
 
 module.exports = router;

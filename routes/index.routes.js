@@ -23,10 +23,13 @@ router.route("/profile/edit/:id")
 })
 
 router.route("/profile/:id")
-.get(isLoggedIn,(req,res)=>{
-  const name = req.session.name
-  const _id = req.session._id
-	res.render("profile/profile", {name: name, _id: _id})
+.get(isLoggedIn,async(req,res)=>{
+  const user = await User.findById(req.params.id)
+
+
+  /* const name = req.session.name
+  const _id = req.params.id */
+	res.render("profile/profile", {name: user.name, _id: user._id})
 })
 
 /* GET home page. */
