@@ -18,7 +18,6 @@ router.route("/profile/edit/:id")
 })
 .post( async (req, res) => {
   try{
-    console.log("im in postttttttt")
     const {name, surname, username, email, password} = req.body;
     const updateUser = await User.findByIdAndUpdate(req.params.id, {name, surname, username, email, password}, function (err, user){
       if (err) {
@@ -32,10 +31,6 @@ router.route("/profile/edit/:id")
   }
   catch (err) {
     console.log(err)
-    // const idUser = req.params.id;
-    // let user = await User.findById(idUser);
-    // console.log(err)
-    // res.render("config/edit-profile", user)
   }
 });
 
