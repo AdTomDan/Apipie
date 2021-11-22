@@ -39,11 +39,13 @@ const indexRouter = require('./routes/index.routes');
 const authRouter = require('./routes/auth.routes');
 const libraryRouter = require('./routes/library.routes');
 const feedRouter = require('./routes/feed.routes');
+const userRouter = require('./routes/users.routes')
 
 app.use('/', indexRouter);
 app.use("/auth",authRouter)
 app.use("/library",libraryRouter)
 app.use("/feed",feedRouter)
+app.use("/users", userRouter)
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {

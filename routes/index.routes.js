@@ -26,7 +26,7 @@ router.route("/profile/:id")
 .get(isLoggedIn,(req,res)=>{
   const name = req.session.name
   const _id = req.session._id
-	res.render("profile/profile",{name: name, _id: _id})
+	res.render("profile/profile", {name: name, _id: _id})
 })
 
 /* GET home page. */
