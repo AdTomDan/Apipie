@@ -9,6 +9,9 @@ const postSchema = new Schema({
 	image: {
 		type: String
     },
+	text: {
+		type: String
+	},
     likes: [{
 		type: Schema.Types.ObjectId,
 		ref: "user"
