@@ -9,9 +9,6 @@ a {
   color: #00B7FF;
 }
 
-
-
-
 .topnav {
   overflow: hidden;
   background-color: #333;
@@ -46,4 +43,8 @@ a {
 
 .nav-items{
   text-decoration: wavy;
+}
+
+.postPhoto{
+  width: 200px;
 }

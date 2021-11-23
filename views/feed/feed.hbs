@@ -36,9 +36,9 @@
         <h4><a href="/profile/{{user._id}}">{{user.username}}</a></h4>
         <i>{{createdAt}}</i>
         <p>{{text}}</p>
-        {{#if image}}
+        {{#if postPhoto}}
         <br>    
-        <img src="{{image}}" width="100px" height="100px">
+        <img src="{{postPhoto}}" class="postPhoto">
         {{/if}}
         <br>
         <a href="/feed/post/like/{{_id}}">&#128151</a> {{likeCount}}
