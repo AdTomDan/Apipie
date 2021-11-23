@@ -10,7 +10,8 @@ a {
 
 
 body {
-  background-color: #fff6ce;
+  background-color: #ffecea;
+  padding: 0 500px;
 }
 
 
@@ -21,11 +22,12 @@ body {
 
 .topnav a {
   float: left;
-  color: #f2f2f2;
+  color: #000000;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  padding-right: 50px;
 }
 
 .topnav a:hover {
@@ -40,9 +42,9 @@ body {
 
 .right-side {
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-self: center;
-  background-color: #f700ff;
+  background-color: #ffffff;
 }
 
 .nav-items{
