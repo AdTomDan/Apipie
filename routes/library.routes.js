@@ -55,8 +55,7 @@ router
 
 //SEARCH BY WORD
 
-router.route("/search?q1=word")
-.get(async (req, res) => {
+router.route("/search").get(async (req, res) => {
   try {
     console.log("heeeyy IM HEREEEE");
     const query = req.query.q1;

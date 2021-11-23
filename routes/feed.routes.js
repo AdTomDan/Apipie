@@ -7,7 +7,6 @@ const User = require("../models/User.model")
 const Post = require("../models/Post.model")
 const Comment = require("../models/Comment.model")
 
-
 router.route("/post/like/:id")
 .get(async(req,res)=>{
     try {
@@ -45,31 +44,39 @@ router.route("/post/comment/:id")
     }
 })
 
-router.route("/searchFriends")
+router.route("/connect")
+.get((req,res)=>{
+    res.render("feed/connect")
+})
 .post(async (req, res) => {
     try {
-      const { search } = req.body;
+      const {search} = req.body;
       const users = await User.find({
         name: { $regex: search, $options: "i" },
       })
+      console.log("test users: ",users)
 
-      /* if it exists, {unfollowLink = true
-      
-    }
-        else, followLink = true
-      */
+      const currentUser = await User.findById(req.session.loggedInUser._id)
+      console.log("currentUser: ", currentUser)
 
+      let userFriends = []
+      let userNotFriends = []
 
+      users.forEach(user=>{
+          if(currentUser.friends.includes(user._id)) {
+              userFriends.push(user)
+          } else {
+              userNotFriends.push(user)
+          }
+      })
 
-      req.session.userList = users
-      res.redirect("/feed")
-
+      res.render("feed/connect",{userFriends,userNotFriends})
       } catch (err) {
-    console.log(err);
+        console.log(err);
     }
   });
 
-router.route("/follow/:id")
+router.route("/connect/:id")
 .get(async(req,res)=>{
     try {
     const friendToFollow = req.params.id
@@ -77,8 +84,21 @@ router.route("/follow/:id")
 
     let followFriend = await User.findByIdAndUpdate(currentUser._id,{$push:{friends:friendToFollow}},{new:true})
     
-    res.redirect("/feed")
-    console.log("currentUser: ",currentUser.friends)
+    res.redirect("/feed/connect")
+    } catch (err) {
+        console.log(err)
+    }
+})
+
+router.route("/disconnect/:id")
+.get(async(req,res)=>{
+    try {
+    const friendToUnFollow = req.params.id
+    const currentUser = req.session.loggedInUser
+
+    let unFollowFriend = await User.findByIdAndUpdate(currentUser._id,{$pull:{friends:friendToUnFollow}},{new:true})
+    
+    res.redirect("/feed/connect")
     } catch (err) {
         console.log(err)
     }
@@ -94,11 +114,9 @@ router.route("/")
             model: 'User'
         }}).sort({'createdAt': -1})
     
-    const currentUser = await User.findById(req.session.loggedInUser._id);
-
-    res.render("feed/feed",{allPosts, currentUser,userInfo: req.session.loggedInUser._id, userList: req.session.userList});
-
-    req.session.userList = null;
+    const currentUser = await User.findById(req.session.loggedInUser._id)
+    res.render("feed/feed",{allPosts, currentUser,userInfo: req.session.loggedInUser._id})
+    
 })
 .post(fileUploader.single("imgUrl"), async(req,res)=>{
     try {
