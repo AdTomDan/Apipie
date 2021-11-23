@@ -1,4 +1,17 @@
 <h1>{{currentUser.name}}'s Feed</h1>
+<p>Find my friends:</p>
+<form action="/feed/searchFriends" method="POST">
+
+  <label for="search"></label>
+  <input type="text" name="search" placeholder="Name" required>
+  <button type="submit">🔎</button>
+
+</form>
+<div class="searchContainer">
+    {{#each users}}
+        <p>{{this.username}} - {{this.name}} {{this.surname}} - <a href="">Follow</a></p>
+    {{/each}}
+</div>
 <p>Create new post</p>
 <form action="/feed" method="POST" style="border-style: dashed;">
     <label for="text">Text: </label>

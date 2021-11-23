@@ -45,6 +45,31 @@ router.route("/post/comment/:id")
     }
 })
 
+router.route("/searchFriends")
+.post(async (req, res) => {
+    try {
+      const { search } = req.body;
+      const users = await User.find({
+        name: { $regex: search, $options: "i" },
+      })
+      console.log("users:", users)
+      
+      const allPosts = await Post.find().populate("user", "username").populate("likes", "username").populate({ 
+        path: 'comments',
+        model: 'Comment',
+        populate: {
+            path: 'author',
+            model: 'User'
+        }}).sort({'createdAt': -1})
+    
+      const currentUser = await User.findById(req.session.loggedInUser._id)
+      res.render("feed/feed",{allPosts, currentUser, users})
+
+      } catch (err) {
+    console.log(err);
+    }
+  });
+
 router.route("/")
 .get(async(req,res)=>{
     const allPosts = await Post.find().populate("user", "username").populate("likes", "username").populate({ 
