@@ -51,13 +51,6 @@ a {
   width: 200px;
 }
 
-<<<<<<< HEAD
-=======
-.recipePhoto{
-  width: 200px;
-}
-
->>>>>>> d4581fd07205dcc4c6d08733d4af3f3c637d77ac
 .post {
   background-color: white;
   border: 1px solid rgb(255, 146, 146);
@@ -80,7 +73,7 @@ a {
 
 .profile-header {
   margin-top: 2%;
-  margin-bottom: 2%;
+  margin-top: 2%;
   display: flex;
   justify-content: space-around;
   align-items: center;
