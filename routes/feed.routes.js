@@ -62,7 +62,7 @@ router.route("/")
     try {
         const {text,image} = req.body
         
-        const newPost = await (await Post.create({user: req.session._id,text,image,likes:[],likeCount:0,comments:[]}))
+        const newPost = await (await Post.create({user: req.session._id,text,image,likes:[],likeCount:0,comments:[], postPhoto:req.file.path}))
         const allPosts = await Post.find().populate("user", "username").populate("likes", "username").sort({'createdAt': -1})
         let currentUser = req.session.loggedInUser;
         res.render("feed/feed",{allPosts, currentUser})

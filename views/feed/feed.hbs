@@ -1,11 +1,11 @@
 <h1>{{currentUser.name}}'s Feed</h1>
 <p>Create new post</p>
-<form action="/feed" method="POST" style="border-style: dashed;">
+<form action="/feed" method="POST" style="border-style: dashed;" enctype="multipart/form-data" >
     <label for="text">Text: </label>
     <input type="text" name="text" placeholder="Text">
+    <br>1
     <br>
-    <br>
-    <label for="imgUrl"></label>
+    <label for="postPhoto"></label>
     <input type="file" name="imgUrl"/>
     <br>
     <br>
