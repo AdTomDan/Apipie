@@ -1,0 +1,16 @@
+<p>Find my friends:</p>
+<form action="/feed/connect" method="POST">
+
+  <label for="search"></label>
+  <input type="text" name="search" placeholder="Name" required>
+  <button type="submit">🔎</button>
+
+</form>
+<div class="searchContainer">
+    {{#each userFriends}}
+        <p class="user">{{this.username}} - {{this.name}} {{this.surname}} <a href="/feed/disconnect/{{this._id}}">Un-Follow</a></p>
+    {{/each}}
+    {{#each userNotFriends}}
+        <p class="user">{{this.username}} - {{this.name}} {{this.surname}} <a href="/feed/connect/{{this._id}}">Follow</a></p>
+    {{/each}}
+</div>
