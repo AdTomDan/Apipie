@@ -84,12 +84,8 @@ router.route("/")
         }}).sort({'createdAt': -1})
     
     const currentUser = await User.findById(req.session.loggedInUser._id)
-<<<<<<< HEAD
-    res.render("feed/feed",{allPosts, currentUser, userInfo: req.session.loggedInUser._id})
-=======
     res.render("feed/feed",{allPosts, currentUser, userList: req.session.userList})
     req.session.userList = null
->>>>>>> 3d39b91ebcd1b492cfe942377611b1586c15cefa
 })
 .post(fileUploader.single("imgUrl"), async(req,res)=>{
     try {

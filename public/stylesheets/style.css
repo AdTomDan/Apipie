@@ -1,19 +1,13 @@
 body {
-  padding: 0px;
+  padding: 0 25%;
   margin: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #FFECEA;
 }
 
 a {
   color: #00B7FF;
 }
-
-
-body {
-  background-color: #ffecea;
-  padding: 0 500px;
-}
-
 
 .topnav {
   overflow: hidden;
@@ -49,4 +43,8 @@ body {
 
 .nav-items{
   text-decoration: wavy;
+}
+
+.postPhoto{
+  width: 200px;
 }
