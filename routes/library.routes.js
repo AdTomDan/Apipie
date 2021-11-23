@@ -31,7 +31,7 @@ router
   .get( async (req, res) => {
     const randomRecipe = await Recipe.aggregate([{ $sample: { size: 1 } }]);
     console.log(randomRecipe);
-    res.render("library/library", randomRecipe[0]);
+    res.render("library/library", {randomRecipe: randomRecipe[0], userInfo: req.session.loggedInUser._id});
   })
   .post(async (req, res) => {
     try {
@@ -81,7 +81,7 @@ router
     try {
       const id = req.params.id;
       const recipe = await Recipe.findById(id).populate("author", "username");
-      res.render("library/edit-recipe", recipe);
+      res.render("library/edit-recipe", {recipe, userInfo: req.session.loggedInUser._id});
     } catch (err) {
       console.log(err);
     }

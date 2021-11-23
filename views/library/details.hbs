@@ -1,3 +1,5 @@
+{{>navbar userInfo=userInfo}}
+
 <div>
     <p>{{recipe.name}}</p>
     <hr>
@@ -23,13 +25,13 @@
 
     </ol>
     </details>
-    <hr>
     {{#if showDelete}}
+    <hr>
     <a href="/library/delete/{{recipe._id}}">Delete Pie</a>
     {{/if}}
 </div>
-<hr>
 {{#if showEdit}}
+<hr>
 <a href="/library/edit/{{recipe._id}}">Edit Pie</a>
 {{/if}}
 <hr>

@@ -34,6 +34,17 @@ body {
 }
 
 .topnav a.active {
-  background-color: #04AA6D;
-  color: white;
+  background-color: #ffffff;
+  color: rgb(85, 0, 0);
+}
+
+.right-side {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  background-color: #f700ff;
+}
+
+.nav-items{
+  text-decoration: wavy;
 }

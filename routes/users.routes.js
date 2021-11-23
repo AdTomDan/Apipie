@@ -13,7 +13,7 @@ router.route("/profile/edit/:id")
   try{
     const idUser = req.params.id;
     const user = await User.findById(idUser)
-    res.render("config/edit-profile", user);
+    res.render("config/edit-profile", {user, userInfo: req.session.loggedInUser._id});
   }
   catch(err){
     console.log(err)

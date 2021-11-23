@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 const User = require("../models/User.model")
+const Post = require("../models/Post.model")
+const Recipe = require("../models/Recipe.model")
 const Api = require("../apis/api");
 const isLoggedIn = require('../middleware/isLoggedIn');
 
@@ -14,30 +16,28 @@ router.route("/welcome")
 .get(isLoggedIn,(req,res)=>{
   const name = req.session.name
   const _id = req.session._id
-  res.render("home/welcome",{name: name, _id: _id})
+  res.render("home/welcome",{name: name, _id: _id, userInfo: req.session.loggedInUser._id})
 })
 
 router.route("/profile/edit/:id")
 .get(isLoggedIn,(req,res)=>{
-	res.render("config/edit-profile")
+	res.render("config/edit-profile", {userInfo: req.session.loggedInUser._id})
 })
 
 router.route("/profile/:id")
 .get(isLoggedIn,async(req,res)=>{
-  const user = await User.findById(req.params.id)
-  console.log(req.params.id)
-
-
-  /* const name = req.session.name
-  const _id = req.params.id */
-	res.render("profile/profile", {name: user.name, _id: user._id})
+  const user = await User.findById(req.params.id);
+  const userPosts = await Post.find({user: user._id}).sort({'createdAt': -1})
+  const userRecipes = await Recipe.find({author: user._id}).sort({'createdAt': -1})
+	res.render("profile/profile", {name: user.name, _id: user._id, userPosts: userPosts, userRecipes: userRecipes, userInfo: req.session.loggedInUser._id})
 })
 
 /* GET home page. */
 router.route("/")
 .get(isLoggedIn,(req, res)=> {
   const name = req.session.name
-  res.render("home/welcome",{name})
+  console.log("req.session.loggedInUser._id ===", req.session.loggedInUser._id)
+  res.render("home/welcome", {name, userInfo: req.session.loggedInUser._id})
 })
 
 // Log out
@@ -46,13 +46,6 @@ router.get('/logout', (req, res) => {
 		if (err) res.render('error');
 		else res.redirect('/auth');
 	});
-});
-
-/* GET from API */
-router.get('/api', (req, res)=> {
-  Api.getAll().then((entity)=>
-  res.render('index', { title: 'Express', users: entity})
-);
 });
 
 module.exports = router;

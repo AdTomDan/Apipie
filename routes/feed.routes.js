@@ -56,7 +56,7 @@ router.route("/")
         }}).sort({'createdAt': -1})
     
     const currentUser = await User.findById(req.session.loggedInUser._id)
-    res.render("feed/feed",{allPosts, currentUser})
+    res.render("feed/feed",{allPosts, currentUser, userInfo: req.session.loggedInUser._id})
 })
 .post(fileUploader.single("imgUrl"), async(req,res)=>{
     try {
@@ -65,7 +65,7 @@ router.route("/")
         const newPost = await (await Post.create({user: req.session._id,text,image,likes:[],likeCount:0,comments:[]}))
         const allPosts = await Post.find().populate("user", "username").populate("likes", "username").sort({'createdAt': -1})
         let currentUser = req.session.loggedInUser;
-        res.render("feed/feed",{allPosts, currentUser})
+        res.render("feed/feed",{allPosts, currentUser, userInfo: req.session.loggedInUser._id})
     } catch (err) {
         console.log(err)
     }
