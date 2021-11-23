@@ -21,6 +21,10 @@ hbs.registerHelper('formatDate', function(dateString) {
   );
 });
 
+hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
+  return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
+
 // Middleware configuration
 module.exports = (app) => {
   // In development environment the app logs

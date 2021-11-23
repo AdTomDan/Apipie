@@ -1,7 +1,5 @@
 {{>navbar userInfo=userInfo}}
 
-
-
 <h1>{{currentUser.name}}'s Feed - <a href="/feed/connect">Connect</a></h1>
 
 <form action="/feed" method="POST" style="border-style: solid; padding: 5px;" enctype="multipart/form-data" >
@@ -45,6 +43,11 @@
             <input type="text" name="content" placeholder="Comment">
             <button type="submit">Post Comment</button>
         </form>
+        
+        {{#ifEquals ../currentUser.username user.username}}
+            <a href="/feed/delete/{{_id}}">Delete</a>
+        {{/ifEquals}}
+
     </div>
   {{/each}}
 </div>

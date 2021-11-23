@@ -129,7 +129,18 @@ router.route("/")
     } catch (err) {
         console.log(err);
     }
-})
+});
+
+router.route("/delete/:id").get(async (req, res) => {
+    try {
+      let deletePost = await Post.findByIdAndDelete(req.params.id);
+  
+      res.redirect("/feed");
+    } catch (err) {
+      console.log(err);
+      res.render("feed/feed");
+    }
+  });
 
 module.exports = router;
 
