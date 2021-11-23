@@ -4,4 +4,28 @@
 
 <a href="/users/profile/edit/{{_id}}">Edit my profile</a>
 <hr>
+<h2>My posts:</h2>
+{{#each userPosts}}
+    <div class="post" style="border: solid;">
+        <p>{{this.text}} - {{this.createdAt}}</p>
+        {{#if this.image}}
+        <br>    
+        <img src="{{this.image}}" width="100px" height="100px">
+        {{/if}}
+    </div>
+    <br>
+{{/each}}
+<h2>My recipes:</h2>
+{{#each userRecipes}}
+    <div class="post" style="border: solid;">
+        <p><a href="/library/details/{{this._id}}">{{this.name}}</a> - {{this.createdAt}}</p>
+        {{#if this.imgUrl}}
+        <br>
+        <img src="{{this.imgUrl}}" width="100px" height="100px">
+        {{/if}}
+    </div>
+    <br>
+{{/each}}
+
+
 <a href="/welcome">Back</a>

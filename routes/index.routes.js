@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 const User = require("../models/User.model")
+const Post = require("../models/Post.model")
+const Recipe = require("../models/Recipe.model")
 const Api = require("../apis/api");
 const isLoggedIn = require('../middleware/isLoggedIn');
 
@@ -25,11 +27,9 @@ router.route("/profile/edit/:id")
 router.route("/profile/:id")
 .get(isLoggedIn,async(req,res)=>{
   const user = await User.findById(req.params.id)
-
-
-  /* const name = req.session.name
-  const _id = req.params.id */
-	res.render("profile/profile", {name: user.name, _id: user._id})
+  const userPosts = await Post.find({user: user._id}).sort({'createdAt': -1})
+  const userRecipes = await Recipe.find({author: user._id}).sort({'createdAt': -1})
+	res.render("profile/profile", {name: user.name, _id: user._id, userPosts: userPosts, userRecipes: userRecipes})
 })
 
 /* GET home page. */
