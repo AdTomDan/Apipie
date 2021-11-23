@@ -25,6 +25,7 @@ router.route("/profile/edit/:id")
 router.route("/profile/:id")
 .get(isLoggedIn,async(req,res)=>{
   const user = await User.findById(req.params.id)
+  console.log(req.params.id)
 
 
   /* const name = req.session.name

@@ -30,8 +30,9 @@ router.route("/") // LOGIN
 
 		if(isPwdCorrect) {
 			req.session.loggedInUser = user
-      req.session.name = user.name
-      req.session._id = user._id
+      req.session.name = user.name;
+      req.session._id = user._id;
+      console.log(req.session)
       res.redirect("/welcome")
 		} 
 		else res.render('auth/login',{errorMessage:"Username/password incorrect."})
