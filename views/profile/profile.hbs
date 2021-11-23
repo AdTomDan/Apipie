@@ -9,12 +9,12 @@
     </div>
 </div>
 <hr>
-{{!-- <h2>My Friends:</h2> --}}
+<h2>Friends:</h2>
 {{#each user.friends}}
-    <p>test {{this.username}} - {{this.name}} {{this.surname}}</p>
+    <p>{{this.username}} - {{this.name}} {{this.surname}}</p>
 {{/each}}
 
-<h2>My posts:</h2>
+<h2>Posts:</h2>
 {{#each userPosts}}
     <div class="post" style="border: solid;">
         <p>{{this.text}} - <i>{{this.createdAt}}</i></p>
@@ -25,7 +25,7 @@
     </div>
     <br>
 {{/each}}
-<h2>My recipes:</h2>
+<h2>Recipes:</h2>
 {{#each userRecipes}}
     <div class="post" style="border: solid;">
         <p><a href="/library/details/{{this._id}}">{{this.name}}</a> - <i>{{this.createdAt}}</i></p>
