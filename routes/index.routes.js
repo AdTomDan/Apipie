@@ -29,7 +29,8 @@ router.route("/profile/:id")
   const user = await User.findById(req.params.id).populate("friends","name surname username")
   const userPosts = await Post.find({user: user._id}).sort({'createdAt': -1})
   const userRecipes = await Recipe.find({author: user._id}).sort({'createdAt': -1})
-	res.render("profile/profile", {user: user, name: user.name, _id: user._id, userPosts: userPosts, userRecipes: userRecipes, userInfo: req.session.loggedInUser._id})
+  console.log(user)
+	res.render("profile/profile", {user: user, userPosts: userPosts, userRecipes: userRecipes, userInfo: req.session.loggedInUser._id})
 })
 
 /* GET home page. */
