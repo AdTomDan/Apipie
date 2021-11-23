@@ -16,23 +16,23 @@
         <p>{{this.username}} - {{this.name}} {{this.surname}} - <a href="/feed/follow/{{this._id}}">Follow</a></p>
     {{/each}}
 </div>
-<p>Create new post</p>
-<form action="/feed" method="POST" style="border-style: dashed;" enctype="multipart/form-data" >
+<form action="/feed" method="POST" style="border-style: solid; padding: 5px;" enctype="multipart/form-data" >
+<p>NEW POST:</p>
     <label for="text">Text: </label>
     <input type="text" name="text" placeholder="Text">
-    <br>1
+    <br>
     <br>
     <label for="postPhoto"></label>
     <input type="file" name="imgUrl"/>
     <br>
     <br>
-    <button type="submit">Create</button>
+    <button type="submit">POST</button>
 </form>
-<h3>Posts:</h3>
 
+<h3></h3>
 <div class="allPosts">
     {{#each allPosts}}
-    <div class="post" style="border-style: solid; margin:5px; padding: 5px">
+    <div class="post">
         <h4><a href="/profile/{{user._id}}">{{user.username}}</a></h4>
         <i>{{createdAt}}</i>
         <p>{{text}}</p>
@@ -41,21 +41,20 @@
         <img src="{{postPhoto}}" class="postPhoto">
         {{/if}}
         <br>
-        <a href="/feed/post/like/{{_id}}">&#128151</a> {{likeCount}}
+        <a class="like-button" href="/feed/post/like/{{_id}}">&#128151</a> {{likeCount}}
         <br>
-        <p>Likes:{{#each likes}} {{this.username}} {{/each}}</p>
-        <br>
-        <p>Comments: </p>
+        <p>Liked by:{{#each likes}} <a href="/profile/{{this._id}}">{{this.username}}</a> {{/each}}</p>
+        <hr>
+        <p>COMMENTS: </p>
         <ul>
             {{#each comments}}
-                <li>{{this.content}} - {{this.author.name}}</li>
+                <li>{{this.content}} - <i>{{this.author.name}}</i></li>
             {{/each}}
         </ul>
-        <br>
-        <form action="/feed/post/comment/{{_id}}" method="POST" style="border-style: dashed;">
-            <label for="content">Comment: </label>
+        <hr>
+        <form class="comment-form" action="/feed/post/comment/{{_id}}" method="POST">
+            <label for="content"></label>
             <input type="text" name="content" placeholder="Comment">
-            <br>
             <button type="submit">Post Comment</button>
         </form>
     </div>
