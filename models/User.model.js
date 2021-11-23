@@ -31,7 +31,11 @@ const userSchema = new Schema({
 			type: Schema.Types.ObjectId,
 			ref: "favourites"
 		}
-	]
+	],
+	friends: [{
+		type: Schema.Types.ObjectId,
+		ref: "User"
+	}]
 });
 
 const User = model('User', userSchema);
