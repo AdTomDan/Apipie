@@ -4,8 +4,11 @@
 <h1>Library</h1>
 
 <div>
-<h1>PIE OF THE WEEK: {{this.name}}</h1>
-<img src="https://tastesbetterfromscratch.com/wp-content/uploads/2015/10/Pumpkin-Pie-5-500x500.jpg" alt="Pumpkin Pie" width="150px" height="150px">
+<h1>PIE OF THE WEEK: {{randomRecipe.name}}</h1>
+    {{#if randomRecipe.recipePhoto}} 
+        <img src="{{randomRecipe.recipePhoto}}" class="recipePhoto">
+    {{/if}}
+    <a href="/library/details/{{randomRecipe._id}}">Check this pie out!</a>
 </div>
 
 <form action="/library" method="POST">

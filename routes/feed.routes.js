@@ -52,6 +52,15 @@ router.route("/searchFriends")
       const users = await User.find({
         name: { $regex: search, $options: "i" },
       })
+
+      /* if it exists, {unfollowLink = true
+      
+    }
+        else, followLink = true
+      */
+
+
+
       req.session.userList = users
       res.redirect("/feed")
 
@@ -65,6 +74,7 @@ router.route("/follow/:id")
     try {
     const friendToFollow = req.params.id
     const currentUser = req.session.loggedInUser
+
     let followFriend = await User.findByIdAndUpdate(currentUser._id,{$push:{friends:friendToFollow}},{new:true})
     
     res.redirect("/feed")
