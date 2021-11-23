@@ -52,23 +52,26 @@ router.route("/searchFriends")
       const users = await User.find({
         name: { $regex: search, $options: "i" },
       })
-      console.log("users:", users)
-      
-      const allPosts = await Post.find().populate("user", "username").populate("likes", "username").populate({ 
-        path: 'comments',
-        model: 'Comment',
-        populate: {
-            path: 'author',
-            model: 'User'
-        }}).sort({'createdAt': -1})
-    
-      const currentUser = await User.findById(req.session.loggedInUser._id)
-      res.render("feed/feed",{allPosts, currentUser, users})
+      req.session.userList = users
+      res.redirect("/feed")
 
       } catch (err) {
     console.log(err);
     }
   });
+
+  router.route("/follow/:id")
+  .get(async(req,res)=>{
+    try {
+    const friendToFollow = req.params.id
+    const currentUser = req.session.loggedInUser
+    let followFriend = await User.findByIdAndUpdate(currentUser._id,{$push:{friends:friendToFollow}},{new:true})
+    console.log("currentUser: ",currentUser)
+    res.redirect("/feed")
+    } catch (err) {
+        console.log(err)
+    }
+})
 
 router.route("/")
 .get(async(req,res)=>{
@@ -81,7 +84,8 @@ router.route("/")
         }}).sort({'createdAt': -1})
     
     const currentUser = await User.findById(req.session.loggedInUser._id)
-    res.render("feed/feed",{allPosts, currentUser})
+    res.render("feed/feed",{allPosts, currentUser, userList: req.session.userList})
+    req.session.userList = null
 })
 .post(fileUploader.single("imgUrl"), async(req,res)=>{
     try {
