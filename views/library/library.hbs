@@ -8,6 +8,7 @@
     {{#if randomRecipe.recipePhoto}} 
         <img src="{{randomRecipe.recipePhoto}}" class="recipePhoto">
     {{/if}}
+    <a href="/library/details/{{randomRecipe._id}}">Check this pie out!</a>
 </div>
 
 <form action="/library" method="POST">
