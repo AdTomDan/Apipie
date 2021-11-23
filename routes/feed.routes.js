@@ -45,6 +45,31 @@ router.route("/post/comment/:id")
     }
 })
 
+router.route("/searchFriends")
+.post(async (req, res) => {
+    try {
+      const { search } = req.body;
+      const users = await User.find({
+        name: { $regex: search, $options: "i" },
+      })
+      console.log("users:", users)
+      
+      const allPosts = await Post.find().populate("user", "username").populate("likes", "username").populate({ 
+        path: 'comments',
+        model: 'Comment',
+        populate: {
+            path: 'author',
+            model: 'User'
+        }}).sort({'createdAt': -1})
+    
+      const currentUser = await User.findById(req.session.loggedInUser._id)
+      res.render("feed/feed",{allPosts, currentUser, users})
+
+      } catch (err) {
+    console.log(err);
+    }
+  });
+
 router.route("/")
 .get(async(req,res)=>{
     const allPosts = await Post.find().populate("user", "username").populate("likes", "username").populate({ 
@@ -62,7 +87,7 @@ router.route("/")
     try {
         const {text,image} = req.body
         
-        const newPost = await (await Post.create({user: req.session._id,text,image,likes:[],likeCount:0,comments:[]}))
+        const newPost = await (await Post.create({user: req.session._id,text,image,likes:[],likeCount:0,comments:[], postPhoto:req.file.path}))
         const allPosts = await Post.find().populate("user", "username").populate("likes", "username").sort({'createdAt': -1})
         let currentUser = req.session.loggedInUser;
         res.render("feed/feed",{allPosts, currentUser, userInfo: req.session.loggedInUser._id})

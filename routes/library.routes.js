@@ -52,12 +52,10 @@ router
   })
   .post(fileUploader.single("imgUrl"), async(req, res) => {
     try {
-      const { name, prepTime, cookingTime, difficulty, ingredients, steps } =
+      const { name, prepTime, cookingTime, difficulty, ingredients, steps, recipePhoto} =
         req.body;
       let splitIngredients = ingredients.split(" ");
       let splitSteps = steps.split("/");
-
-    //   const {path: imgUrl} = req.file
 
       const newRecipe = await Recipe.create({
         author: req.session._id,
@@ -67,8 +65,8 @@ router
         difficulty,
         ingredients: splitIngredients,
         steps: splitSteps,
+        recipePhoto: req.file.path,
       });
-      //    console.log("new recipe is: ",newRecipe)
       res.redirect("/library");
     } catch (err) {
       console.log(err);
@@ -95,6 +93,7 @@ router
         difficulty,
         ingredients,
         steps,
+        recipePhoto,
         _id,
       } = req.body;
 
@@ -105,6 +104,7 @@ router
         difficulty,
         ingredients,
         steps,
+        recipePhoto: req.file.path,
       });
       const id = req.params.id;
       res.redirect(`/library/details/${id}`);

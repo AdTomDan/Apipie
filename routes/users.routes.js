@@ -24,7 +24,7 @@ router.route("/profile/edit/:id")
     const {name, surname, username, email, password} = req.body;
     const salt = bcrypt.genSaltSync(saltRound)
     const hashedPwd = bcrypt.hashSync(password,salt)  
-    const updateUser = await User.findByIdAndUpdate(req.params.id, {name, surname, username, email, password: hashedPwd})
+    const updateUser = await User.findByIdAndUpdate(req.params.id, {name, surname, username, email, password: hashedPwd, profilePhoto: req.file.path})
 
     req.session.name = username
     req.session.loggedInUser = updateUser
