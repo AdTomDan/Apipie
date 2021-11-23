@@ -60,14 +60,15 @@ router.route("/searchFriends")
     }
   });
 
-  router.route("/follow/:id")
-  .get(async(req,res)=>{
+router.route("/follow/:id")
+.get(async(req,res)=>{
     try {
     const friendToFollow = req.params.id
     const currentUser = req.session.loggedInUser
     let followFriend = await User.findByIdAndUpdate(currentUser._id,{$push:{friends:friendToFollow}},{new:true})
-    console.log("currentUser: ",currentUser)
+    
     res.redirect("/feed")
+    console.log("currentUser: ",currentUser.friends)
     } catch (err) {
         console.log(err)
     }
@@ -84,12 +85,8 @@ router.route("/")
         }}).sort({'createdAt': -1})
     
     const currentUser = await User.findById(req.session.loggedInUser._id)
-<<<<<<< HEAD
-    res.render("feed/feed",{allPosts, currentUser, userInfo: req.session.loggedInUser._id})
-=======
-    res.render("feed/feed",{allPosts, currentUser, userList: req.session.userList})
+    res.render("feed/feed",{allPosts, currentUser,userInfo: req.session.loggedInUser._id, userList: req.session.userList})
     req.session.userList = null
->>>>>>> 3d39b91ebcd1b492cfe942377611b1586c15cefa
 })
 .post(fileUploader.single("imgUrl"), async(req,res)=>{
     try {
