@@ -8,7 +8,9 @@
 <a href="/users/profile/edit/{{_id}}">Edit my profile</a>
 <hr>
 <h2>My Friends:</h2>
-
+{{#each user.friends}}
+    <p>test {{this.username}} - {{this.name}} {{this.surname}}</p>
+{{/each}}
 
 <h2>My posts:</h2>
 {{#each userPosts}}
