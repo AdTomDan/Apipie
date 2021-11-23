@@ -13,7 +13,9 @@
 </form>
 <div class="searchContainer">
     {{#each userList}}
+        
         <p>{{this.username}} - {{this.name}} {{this.surname}} - <a href="/feed/follow/{{this._id}}">Follow</a></p>
+    
     {{/each}}
 </div>
 <p>Create new post</p>
