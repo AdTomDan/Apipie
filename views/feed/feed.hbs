@@ -36,7 +36,7 @@
     {{#each allPosts}}
     <div class="post">
         <h4><a href="/profile/{{user._id}}">{{user.username}}</a></h4>
-        <i>{{createdAt}}</i>
+        <i>{{formatDate createdAt}}</i>
         <p>{{text}}</p>
         {{#if postPhoto}}
         <br>    
