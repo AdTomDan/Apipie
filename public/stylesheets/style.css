@@ -1,17 +1,22 @@
 body {
   margin: 0px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 17px "Roboto", Helvetica, Arial, sans-serif;
   background-color: #ffecea;
   padding: 0 25%;
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
 }
 
 .topnav {
+  background-color: #ffffff;
   overflow: hidden;
-  background-color: #333;
+  width: 100%;
+  margin-top: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .topnav a {
@@ -21,38 +26,38 @@ a {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
-  padding-right: 50px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
+  height: 3%;
 }
 
 .topnav a.active {
-  background-color: #ffffff;
-  color: rgb(85, 0, 0);
+  color: rgb(231, 145, 145);
+  font-family: "Ramaraja", serif;
+  font-size: 2em;
+
+  width: 30px;
 }
 
 .right-side {
   display: flex;
-  justify-content: end;
-  align-self: center;
-  background-color: #ffffff;
+  justify-content: space-evenly;
 }
 
-.nav-items{
+.nav-items {
   text-decoration: wavy;
+  margin: 0 20px;
 }
 
-.postPhoto{
+.postPhoto {
   width: 200px;
 }
 
-.allPosts {
+<<<<<<< HEAD
+=======
+.recipePhoto{
+  width: 200px;
 }
 
-
+>>>>>>> d4581fd07205dcc4c6d08733d4af3f3c637d77ac
 .post {
   background-color: white;
   border: 1px solid rgb(255, 146, 146);
@@ -66,4 +71,29 @@ a {
 
 .like-button {
   text-decoration: none;
+}
+
+.logo-img {
+  width: 100px;
+}
+
+
+.profile-header {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.profilePhoto-in-profile {
+  object-fit: cover;
+  display: inline;
+  margin: 0 auto;
+  width: 20%;
+}
+
+.profile-text {
+  width: 500px;
+  margin-right: 50px;
 }
