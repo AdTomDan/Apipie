@@ -1,29 +1,98 @@
+
+
+
+
 <div class="signup-block">
-<h1 class="ramaraja">SIGN UP TO APIPIE</h1>
+  <h1 class="ramaraja">Sign up:</h1>
 
-<form class="signup-form" action="/auth/signup" method="POST">
 
-  <label for="name">Name: </label>
-  <input type="text" name="name" placeholder="Glenda" required>
+  <div
+    class="container login-block text-center d-flex justify-content-center align-items-center h-100 bg-gray-100" style="background-color: aliceblue; width:fit-content; padding: 30px; padding-bottom: 10px; border: rgb(198, 225, 255) solid 1px;"
+  >
 
-  <label for="surname">Surname: </label>
-  <input type="text" name="surname" placeholder="Morrissey" required>
+    <main class="form-signin d-flex flex-column justify-content-center">
 
-  <label for="username">Username: </label>
-  <input type="text" name="username" placeholder="GlenMorr" required>
+      <form
+        class="loginForm justify-content-center"
+        style="height: 50%"
+        action="/auth/signup"
+        method="POST"
+      >
 
-  <label for="email">Email: </label>
-  <input type="email" name="email" placeholder="glenda67@gmal.com" required>
+        <div class="form-floating mb-3">
+          <input
+            class="form-control"
+            id="floatingSurname"
+            type="text"
+            name="surname"
+            placeholder="Surname"
+            required
+          />
+          <label for="floatingSurname">Surname</label>
+        </div>
 
-  <label for="password">Password: </label>
-  <input type="password" name="password" id="password" placeholder="🔒" required>
-  
-<br>
-  <button type="submit">Sign up</button>
-</form>
-<br>
-<a href="/auth" style="font-size: smaller;">Go back</a>
-{{#if errorMessage}}
-  <p>{{errorMessage}}</p>
-{{/if}}
+
+
+        <div class="form-floating mb-3">
+          <input
+            class="form-control"
+            id="floatingName"
+            type="text"
+            name="name"
+            placeholder="Name"
+            required
+          />
+          <label for="floatingName">Name</label>
+        </div>
+
+
+        <div class="form-floating mb-3">
+          <input
+            class="form-control"
+            id="floatingUsername"
+            type="text"
+            name="username"
+            placeholder="Username"
+            required
+          />
+          <label for="floatingUsername">Username</label>
+        </div>
+
+
+        <div class="form-floating mb-3">
+          <input
+            class="form-control"
+            id="floatingEmail"
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+          />
+          <label for="floatingEmail">Email</label>
+        </div>
+
+
+        <div class="form-floating mb-3">
+          <input
+            class="form-control"
+            id="floatingPassword"
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+          <label for="floatingPassword">Password</label>
+        </div>
+
+
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign me up!</button>
+      </form>
+
+    </main>
+  </div>
+
+  <a href="/auth" class="mt-3" style="font-size: smaller;">Go back</a>
+  {{#if errorMessage}}
+    <p>{{errorMessage}}</p>
+  {{/if}}
 </div>

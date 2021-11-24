@@ -1,7 +1,7 @@
-
+<div class="d-flex col h-100 justify-content-center">
 <div class="container d-flex justify-content-center position-absolute bg-dark" style="margin-top: 0%;">
   <img
-    class="pie-img position-absolute" style="margin-top: -25%; width: 50%"
+    class="pie-img position-absolute" style="margin-top: -30%; width: 50%"
     src="/images/pie_image_login.png"
     alt="Cherry Pie Image"
   /></img>
@@ -10,34 +10,32 @@
   class="container login-block text-center d-flex justify-content-center align-items-center h-100"
 >
 
-  <main class="form-signin">
+  <main class="form-signin d-flex flex-column justify-content-center">
 
-    <form class="loginForm justify-content-center" action="/auth" method="POST">
+    <form class="loginForm justify-content-center" style="height: 50%" action="/auth" method="POST">
 
-      <a class="active" href="/"><img
+      <a class="active"href="/"><img style="width: 50%" 
           class="logo-img"
           src="/images/logo.png"
           alt="logo!"
         /></a>
-      <div class="form-floating">
+      <div class="form-floating mb-3">
         <input
           class="form-control"
           id="floatingInput"
           type="text"
           name="username"
-          placeholder="pepipalotes"
           required
         />
         <label for="floatingInput">Username</label>
       </div>
-      <div class="form-floating">
+      <div class="form-floating mb-3">
         <input
           class="form-control"
           id="floatingPassword"
           type="password"
           name="password"
           id="password"
-          placeholder="🔒"
           required
         />
         <label for="floatingPassword">Password</label>
@@ -46,10 +44,11 @@
     </form>
 
     Hungry and without an account?
-    <a href="/auth/signup">Sign up</a>
+    <a href="/auth/signup"><span class="text-primary p-1 mt-3">Sign up</span></a>
 
   </main>
 </div>
 {{#if errorMessage}}
   <p>{{errorMessage}}</p>
 {{/if}}
+</div>
