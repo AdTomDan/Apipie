@@ -41,27 +41,18 @@ router
       userInfo: req.session.loggedInUser._id,
     });
   })
-  .post(async (req, res) => {
-    try {
-      const { search } = req.body;
-      const recipes = await Recipe.find({
-        name: { $regex: search, $options: "i" },
-      }).populate("author", "username");
-      res.render("library/list", { recipes });
-    } catch (err) {
-      console.log(err);
-    }
-  });
 
 //SEARCH BY WORD
 
 router.route("/search").get(async (req, res) => {
   try {
     console.log("heeeyy IM HEREEEE");
-    const query = req.query.q1;
+    console.log(req.query);
+    const {search} = req.query
+    // const query = req.query.q1;
     const recipes = await Recipe.find({
-      name: { $regex: query, $options: "i" },
-    });
+      name: { $regex: search, $options: "i" },
+    }).populate("author", "username");
     res.render("library/list", { recipes });
   } catch (err) {
     console.log(err);

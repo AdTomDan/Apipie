@@ -8,25 +8,27 @@
 <img src="https://tastesbetterfromscratch.com/wp-content/uploads/2015/10/Pumpkin-Pie-5-500x500.jpg" alt="Pumpkin Pie" width="150px" height="150px">
 </div>
 
-<form action="/library" method="POST">
+<form action="/library/search" method="GET">
 
   <label for="search"></label>
   <input type="text" name="search" placeholder="Search by keywords" required>
   <button type="submit">🔎</button>
 
 </form>
+        <a href="/library/search?search=pie">All Pies</a> <hr>
 
-
+POPULAR FILTERS
     <div>
-        <a href="/library/search?q1=pie">ALL PIES</a>
-        <a href="/library/search?q1=carrot">CARROT</a>
-        <button type="submit">Sweet</button> 
-        <button type="submit">Savory</button> 
+        <a href="/library/search?search=sweet">sweet</a>
+        <a href="/library/search?search=butter">butter</a>
+        <a href="/library/search?search=lactosefree">Lactose Free</a>
     </div>
 <hr>
     <div>
-        <button type="submit">Dairy-free</button> 
-        <button type="submit">Gluten-free</button> 
+
+        <a href="/library/search?q1=savoury">Savoury</a>
+        <a href="/library/search?q1=butter">Apple</a>
+        <a href="/library/search?q1=lactosefree">Christmas</a>
     </div>
 <hr>
     <div>
