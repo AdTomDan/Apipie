@@ -35,7 +35,11 @@ const userSchema = new Schema({
 	friends: [{
 		type: Schema.Types.ObjectId,
 		ref: "User"
-	}]
+	}],
+	bio: {
+		type: String,
+		maxLength: 400
+	}
 });
 
 const User = model('User', userSchema);

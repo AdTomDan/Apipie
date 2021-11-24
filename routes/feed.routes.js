@@ -55,14 +55,10 @@ router.route("/connect")
       const users = await User.find({
         name: { $regex: search, $options: "i" },
       })
-      console.log("test users: ",users)
 
       const currentUser = await User.findById(req.session.loggedInUser._id)
-      console.log("currentUser: ", currentUser)
 
       const listOfFOllowers = checkFollowing(users, currentUser)
-
-      console.log("listOfFOllowers: ", listOfFOllowers)
 
       res.render("feed/connect",{userFriends: listOfFOllowers.userFriends,userNotFriends: listOfFOllowers.userNotFriends})
       } catch (err) {
