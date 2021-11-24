@@ -96,7 +96,7 @@ router.route("/disconnect/:id")
 
 router.route("/")
 .get(async(req,res)=>{
-    const allPosts = await Post.find().populate("user", "username").populate("likes", "username").populate({ 
+    const allPosts = await Post.find().populate("user").populate("likes", "username").populate({ 
         path: 'comments',
         model: 'Comment',
         populate: {
