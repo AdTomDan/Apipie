@@ -1,0 +1,54 @@
+{{>navbar userInfo=userInfo}}
+
+<h1>{{currentUser.name}}'s Feed - <a href="/feed/connect">Connect</a></h1>
+
+<form action="/feed" method="POST" style="border-style: solid; padding: 5px;" enctype="multipart/form-data" >
+<p>NEW POST:</p>
+    <label for="text">Text: </label>
+    <input type="text" name="text" placeholder="Text">
+    <br>
+    <br>
+    <label for="postPhoto"></label>
+    <input type="file" name="imgUrl"/>
+    <br>
+    <br>
+    <button type="submit">POST</button>
+</form>
+
+<div class="allPosts">
+    {{#each allPosts}}
+    <div class="post">
+        <h4><img src="{{user.profilePhoto}}" alt="{{user.username}}" width="25px" height="25px"> <a href="/profile/{{user._id}}">{{user.username}}</a></h4>
+        <i>{{formatDate createdAt}}</i>
+        <p>{{text}}</p>
+        {{#if postPhoto}}
+        <br>    
+        <img src="{{postPhoto}}" class="postPhoto">
+        {{/if}}
+        <br>
+        <a class="like-button" href="/feed/post/like/{{_id}}">&#128151</a> {{likeCount}}
+        <br>
+        <p>Liked by:{{#each likes}} <a href="/profile/{{this._id}}">{{this.username}}</a>, {{/each}}</p>
+        <hr>
+        <p>COMMENTS: </p>
+        <ul>
+            {{#each comments}}
+                <li>{{this.content}} - <a href="/profile/{{this.author._id}}"><i>{{this.author.name}}</i></a> <img width="20px" height="20px" src="{{this.author.profilePhoto}}" alt="{{this.author.name}}"></li>
+            {{/each}}
+        </ul>
+        <hr>
+        <form class="comment-form" action="/feed/post/comment/{{_id}}" method="POST">
+            <label for="content"><img width="25px" height="25px" src="{{../userInfo.profilePhoto}}" alt=""></label>
+            <input type="text" name="content" placeholder="Comment">
+            <button type="submit">Post Comment</button>
+        </form>
+        
+        {{#ifEquals ../currentUser.username user.username}}
+            <a href="/feed/delete/{{_id}}">Delete</a>
+        {{/ifEquals}}
+
+    </div>
+  {{/each}}
+</div>
+
+<a href="/welcome">Back</a>

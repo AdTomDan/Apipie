@@ -9,7 +9,7 @@
   "dependencies": {
     "axios": "^0.21",
     "bcrypt": "^5",
-    "cloudinary": "^1",
+    "cloudinary": "^1.27.1",
     "connect-mongo": "^4",
     "cookie-parser": "^1",
     "dotenv": "^10",
@@ -17,10 +17,12 @@
     "express-session": "^1",
     "hbs": "^4",
     "http-errors": "^1",
+    "jsdom": "^18.1.1",
+    "moment": "^2.29.1",
     "mongoose": "^5",
     "morgan": "^1",
     "multer": "^1",
-    "multer-storage-cloudinary": "^4",
+    "multer-storage-cloudinary": "^4.0.0",
     "serve-favicon": "^2"
   },
   "devDependencies": {

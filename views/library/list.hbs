@@ -1,0 +1,17 @@
+{{>navbar userInfo=userInfo}}
+
+
+<h1>Results:</h1>
+
+
+<ul class="recipe-list">
+  {{#each recipes}}
+    <li>
+        {{this.name}}
+        Author: {{this.author.username}}
+        <a href="/library/details/{{this.id}}">See details</a>
+    </li>
+  {{/each}}
+</ul>
+
+<a href="/library">Back</a>
