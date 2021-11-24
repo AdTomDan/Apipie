@@ -1,5 +1,7 @@
 var express = require("express");
 
+var moment = require("moment");
+
 var logger = require("morgan");
 
 const cookieParser = require("cookie-parser");
@@ -12,6 +14,16 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 
 const hbs = require("hbs");
+
+hbs.registerHelper('formatDate', function(dateString) {
+  return new hbs.SafeString(
+      moment(dateString).format("LLLL").toUpperCase()
+  );
+});
+
+hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
+  return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
 
 // Middleware configuration
 module.exports = (app) => {
