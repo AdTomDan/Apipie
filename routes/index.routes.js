@@ -30,12 +30,18 @@ router.route("/profile/:id").get(isLoggedIn, async (req, res) => {
   const userRecipes = await Recipe.find({ author: user._id }).sort({
     createdAt: -1,
   });
-  console.log(user);
+  console.log(req.params.id, req.session.loggedInUser._id)
+  let editButton = false;
+  if (req.params.id == req.session.loggedInUser._id) {
+    editButton = true;
+  }
+  console.log(editButton)
   res.render("profile/profile", {
     user: user,
     userPosts: userPosts,
     userRecipes: userRecipes,
     userInfo: req.session.loggedInUser,
+    editButton
   });
 });
 

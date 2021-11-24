@@ -9,9 +9,9 @@
 
 <div class="searchContainer">
     {{#each userFriends}}
-        <img src="{{this.profilePhoto}}" width="25px" height="25px"> <a href="/profile/{{this._id}}" class="link-dark text-decoration-none">{{this.username}}</a> - {{this.name}} {{this.surname}} <a href="/feed/disconnect/{{this._id}}" class="btn btn-danger btn-sm">Un-Follow</a>
+        <img src="{{this.profilePhoto}}" width="25px" height="25px"> <a href="/profile/{{this._id}}" class="link-dark text-decoration-none">{{this.username}}</a> - {{this.name}} {{this.surname}} <a href="/feed/disconnect/{{this._id}}" class="btn btn-danger btn-sm">Unfollow</a><br>
     {{/each}}
     {{#each userNotFriends}}
-        <img src="{{this.profilePhoto}}" width="25px" height="25px"> <a href="/profile/{{this._id}}" class="link-dark text-decoration-none">{{this.username}}</a> - {{this.name}} {{this.surname}} <a href="/feed/connect/{{this._id}}" class="btn btn-primary btn-sm">Follow</a>
+        <img src="{{this.profilePhoto}}" width="25px" height="25px"> <a href="/profile/{{this._id}}" class="link-dark text-decoration-none">{{this.username}}</a> - {{this.name}} {{this.surname}} <a href="/feed/connect/{{this._id}}" class="btn btn-primary btn-sm">Follow</a><br>
     {{/each}}
 </div>
