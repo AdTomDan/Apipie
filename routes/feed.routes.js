@@ -113,7 +113,13 @@ router.route("/")
         const {text,image} = req.body;
         
         const newPost = await (await Post.create({user: req.session._id,text,image,likes:[],likeCount:0,comments:[], postPhoto:req.file.path}));
-        const allPosts = await Post.find().populate("user", "username").populate("likes", "username").sort({'createdAt': -1});
+        const allPosts = await Post.find().populate("user", "username").populate("likes", "username").populate({ 
+            path: 'comments',
+            model: 'Comment',
+            populate: {
+                path: 'author',
+                model: 'User'
+            }}).sort({'createdAt': -1});
         let currentUser = req.session.loggedInUser;
         res.render("feed/feed",{allPosts, currentUser, userInfo: req.session.loggedInUser._id});
     } catch (err) {
