@@ -1,0 +1,30 @@
+{{>navbar userInfo=userInfo}}
+
+
+<h1>Library</h1>
+
+<div>
+<h1>PIE OF THE WEEK: {{this.name}}</h1>
+<img src="https://tastesbetterfromscratch.com/wp-content/uploads/2015/10/Pumpkin-Pie-5-500x500.jpg" alt="Pumpkin Pie" width="150px" height="150px">
+</div>
+
+<form action="/library/search" method="GET">
+
+  <label for="search"></label>
+  <input type="text" name="search" placeholder="Search by keywords" required>
+  <button type="submit">🔎</button>
+
+</form>
+        <a href="/library/search?search=pie">All Pies</a> <hr>
+
+POPULAR FILTERS
+    <div>
+        <a href="/library/search?search=sweet">Sweet</a>
+        <a href="/library/search?search=butter">Butter</a>
+        <a href="/library/search?search=lactosefree">Lactose Free</a>
+    </div>
+<hr>
+
+<a href="/library/create">Create Recipe</a>
+<br>
+<a href="/welcome">Back</a>
