@@ -1,0 +1,25 @@
+<div class="login-block">
+<img class="logo-img" src="/images/pie_image_login.png" alt="Cherry Pie Image"/>
+<a class="active" href="/"><img class="logo-img" src="/images/logo.png" alt="logo!"/></a>
+
+<form class="loginForm" action="/auth" method="POST">
+
+  <label for="username">Username: </label>
+  <input type="text" name="username" placeholder="pepipalotes" required>
+
+  <label for="password">Password: </label>
+  <input type="password" name="password" id="password" placeholder="🔒" required>
+
+  <button type="submit">Log in</button>
+</form>
+
+<<<<<<< HEAD
+Feeling hungry? <a href="/auth/signup" style="color: blue;">Sign up</a>
+=======
+Hungry and without an account? <a href="/auth/signup">Sign up</a>
+</div>
+>>>>>>> 549a04fd7d53aa88539e9005d4b0dd93920dfa6d
+
+{{#if errorMessage}}
+  <p>{{errorMessage}}</p>
+{{/if}}
