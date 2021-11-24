@@ -23,6 +23,7 @@
     "morgan": "^1",
     "multer": "^1",
     "multer-storage-cloudinary": "^4.0.0",
+    "redis": "^3.1.2",
     "serve-favicon": "^2"
   },
   "devDependencies": {
