@@ -60,7 +60,7 @@ router.route("/connect")
 
       const listOfFOllowers = checkFollowing(users, currentUser)
 
-      res.render("feed/connect",{userFriends: listOfFOllowers.userFriends,userNotFriends: listOfFOllowers.userNotFriends,userInfo:req.session.loggedInUser._id})
+      res.render("feed/connect",{userFriends: listOfFOllowers.userFriends,userNotFriends: listOfFOllowers.userNotFriends,userInfo:req.session.loggedInUser})
       } catch (err) {
         console.log(err);
     }
@@ -121,7 +121,7 @@ router.route("/")
                 model: 'User'
             }}).sort({'createdAt': -1});
         let currentUser = req.session.loggedInUser;
-        res.render("feed/feed",{allPosts, currentUser, userInfo: req.session.loggedInUser._id});
+        res.render("feed/feed",{allPosts, currentUser, userInfo: req.session.loggedInUser});
     } catch (err) {
         console.log(err);
     }
