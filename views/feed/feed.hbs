@@ -15,11 +15,10 @@
     <button type="submit">POST</button>
 </form>
 
-<h3></h3>
 <div class="allPosts">
     {{#each allPosts}}
     <div class="post">
-        <h4><a href="/profile/{{user._id}}">{{user.username}}</a></h4>
+        <h4><img src="{{user.profilePhoto}}" alt="{{user.username}}"> <a href="/profile/{{user._id}}">{{user.username}}</a></h4>
         <i>{{formatDate createdAt}}</i>
         <p>{{text}}</p>
         {{#if postPhoto}}
@@ -34,12 +33,12 @@
         <p>COMMENTS: </p>
         <ul>
             {{#each comments}}
-                <li>{{this.content}} - <i>{{this.author.name}}</i></li>
+                <li>{{this.content}} - <a href="/profile/{{this.author._id}}"><i>{{this.author.name}}</i></a> <img width="20px" height="20px" src="{{this.author.profilePhoto}}" alt="{{this.author.name}}"></li>
             {{/each}}
         </ul>
         <hr>
         <form class="comment-form" action="/feed/post/comment/{{_id}}" method="POST">
-            <label for="content"></label>
+            <label for="content"><img width="20px" height="20px" src="{{userInfo.profilePhoto}}" alt=""></label>
             <input type="text" name="content" placeholder="Comment">
             <button type="submit">Post Comment</button>
         </form>

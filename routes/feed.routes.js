@@ -60,7 +60,7 @@ router.route("/connect")
 
       const listOfFOllowers = checkFollowing(users, currentUser)
 
-      res.render("feed/connect",{userFriends: listOfFOllowers.userFriends,userNotFriends: listOfFOllowers.userNotFriends})
+      res.render("feed/connect",{userFriends: listOfFOllowers.userFriends,userNotFriends: listOfFOllowers.userNotFriends,userInfo:req.session.loggedInUser._id})
       } catch (err) {
         console.log(err);
     }
@@ -74,7 +74,7 @@ router.route("/connect/:id")
 
     let followFriend = await User.findByIdAndUpdate(currentUser._id,{$push:{friends:friendToFollow}},{new:true})
     
-    res.redirect("/feed/connect")
+    res.redirect("/feed/connect",)
     } catch (err) {
         console.log(err)
     }
@@ -105,7 +105,7 @@ router.route("/")
         }}).sort({'createdAt': -1})
     
     const currentUser = await User.findById(req.session.loggedInUser._id)
-    res.render("feed/feed",{allPosts, currentUser,userInfo: req.session.loggedInUser._id})
+    res.render("feed/feed",{allPosts, currentUser,userInfo: req.session.loggedInUser})
     
 })
 .post(fileUploader.single("imgUrl"), async(req,res)=>{

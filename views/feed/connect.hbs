@@ -9,9 +9,9 @@
 </form>
 <div class="searchContainer">
     {{#each userFriends}}
-        <p class="user">{{this.username}} - {{this.name}} {{this.surname}} <a href="/feed/disconnect/{{this._id}}">Un-Follow</a></p>
+        <p class="user"><a href="/profile/{{this._id}}">{{this.username}}</a> - {{this.name}} {{this.surname}} <a href="/feed/disconnect/{{this._id}}">Un-Follow</a></p>
     {{/each}}
     {{#each userNotFriends}}
-        <p class="user">{{this.username}} - {{this.name}} {{this.surname}} <a href="/feed/connect/{{this._id}}">Follow</a></p>
+        <p class="user"><a href="/profile/{{this._id}}">{{this.username}}</a> - {{this.name}} {{this.surname}} <a href="/feed/connect/{{this._id}}">Follow</a></p>
     {{/each}}
 </div>
