@@ -1,25 +1,29 @@
-<h1>this is the signup page</h1>
+<div class="signup-block">
+<h1 class="ramaraja">SIGN UP TO APIPIE</h1>
 
-<form action="/auth/signup" method="POST">
+<form class="signup-form" action="/auth/signup" method="POST">
 
   <label for="name">Name: </label>
-  <input type="text" name="name" placeholder="Pepito" required>
+  <input type="text" name="name" placeholder="Glenda" required>
 
   <label for="surname">Surname: </label>
-  <input type="text" name="surname" placeholder="de los Palotes" required>
+  <input type="text" name="surname" placeholder="Morrissey" required>
 
   <label for="username">Username: </label>
-  <input type="text" name="username" placeholder="pepipalotes" required>
+  <input type="text" name="username" placeholder="GlenMorr" required>
 
   <label for="email">Email: </label>
-  <input type="email" name="email" placeholder="example@example.com" required>
+  <input type="email" name="email" placeholder="glenda67@gmal.com" required>
 
   <label for="password">Password: </label>
   <input type="password" name="password" id="password" placeholder="🔒" required>
   
+<br>
   <button type="submit">Sign up</button>
 </form>
-<a href="/auth">Go back</a>
+<br>
+<a href="/auth" style="font-size: smaller;">Go back</a>
 {{#if errorMessage}}
   <p>{{errorMessage}}</p>
 {{/if}}
+</div>
