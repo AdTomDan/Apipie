@@ -105,7 +105,7 @@ router.route("/")
         }}).sort({'createdAt': -1})
     
     const currentUser = await User.findById(req.session.loggedInUser._id)
-    res.render("feed/feed",{allPosts, currentUser,userInfo: req.session.loggedInUser._id})
+    res.render("feed/feed",{allPosts, currentUser,userInfo: req.session.loggedInUser})
     
 })
 .post(fileUploader.single("imgUrl"), async(req,res)=>{

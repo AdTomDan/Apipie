@@ -20,14 +20,14 @@ router.route("/details/:id").get(async (req, res) => {
       showEdit = true; // IF SESSION === AUTHOR, WE CREATE A VARIABLE TO DISPLAY "EDIT PIE" BUTTON
       showDelete = true;
     }
-    res.render("library/details", { recipe, showEdit, showDelete });
+    res.render("library/details", { recipe, showEdit, showDelete,userInfo: req.session.loggedInUser._id });
   } catch (err) {
     console.log(err);
   }
 });
 
 router.route("/list").get((req, res) => {
-  res.render("library/list");
+  res.render("library/list",{userInfo: req.session.loggedInUser._id});
 });
 
 // PIE OF THE WEEK PAGE
@@ -53,7 +53,7 @@ router.route("/search").get(async (req, res) => {
     const recipes = await Recipe.find({
       name: { $regex: search, $options: "i" },
     }).populate("author", "username");
-    res.render("library/list", { recipes });
+    res.render("library/list", { recipes,userInfo: req.session.loggedInUser._id });
   } catch (err) {
     console.log(err);
   }
@@ -64,7 +64,7 @@ router.route("/search").get(async (req, res) => {
 router
   .route("/create")
   .get((req, res) => {
-    res.render("library/create-recipe");
+    res.render("library/create-recipe",{userInfo: req.session.loggedInUser._id});
   })
   .post(fileUploader.single("imgUrl"), async (req, res) => {
     try {
@@ -90,7 +90,7 @@ router
         steps: splitSteps,
         recipePhoto: req.file.path,
       });
-      res.redirect("/library");
+      res.redirect("/library",{userInfo: req.session.loggedInUser._id});
     } catch (err) {
       console.log(err);
     }
@@ -135,7 +135,7 @@ router
         recipePhoto: req.file.path,
       });
       const id = req.params.id;
-      res.redirect(`/library/details/${id}`);
+      res.redirect(`/library/details/${id}`,{userInfo: req.session.loggedInUser._id});
     } catch (err) {
       console.log(err);
     }
@@ -145,10 +145,10 @@ router.route("/delete/:id").get(async (req, res) => {
   try {
     let deletedRecipe = await Recipe.findByIdAndDelete(req.params.id);
 
-    res.redirect("/library");
+    res.redirect("/library",{userInfo: req.session.loggedInUser._id});
   } catch (err) {
     console.log(err);
-    res.render("/library");
+    res.render("/library",{userInfo: req.session.loggedInUser._id});
   }
 });
 
