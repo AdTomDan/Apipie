@@ -1,17 +1,17 @@
 {{>navbar userInfo=userInfo}}
-<p>Find my friends:</p>
-<form action="/feed/connect" method="POST">
-
-  <label for="search"></label>
-  <input type="text" name="search" placeholder="Name" required>
-  <button type="submit">🔎</button>
-
+<h2>Find your friends</h2>
+<form action="/feed/connect" class="border border-2 p-2 bg-light" method="POST">
+<div class="form-group d-flex">
+  <input type="text" class="form-control" id="text" aria-describedby="text" name="search" required>
+  <button class="btn btn-light" type="submit">🔎</button>
+ </div>
 </form>
+
 <div class="searchContainer">
     {{#each userFriends}}
-        <p class="user"><a href="/profile/{{this._id}}">{{this.username}}</a> - {{this.name}} {{this.surname}} <a href="/feed/disconnect/{{this._id}}">Un-Follow</a></p>
+        <img src="{{this.profilePhoto}}" width="25px" height="25px"> <a href="/profile/{{this._id}}" class="link-dark text-decoration-none">{{this.username}}</a> - {{this.name}} {{this.surname}} <a href="/feed/disconnect/{{this._id}}" class="btn btn-danger btn-sm">Un-Follow</a>
     {{/each}}
     {{#each userNotFriends}}
-        <p class="user"><a href="/profile/{{this._id}}">{{this.username}}</a> - {{this.name}} {{this.surname}} <a href="/feed/connect/{{this._id}}">Follow</a></p>
+        <img src="{{this.profilePhoto}}" width="25px" height="25px"> <a href="/profile/{{this._id}}" class="link-dark text-decoration-none">{{this.username}}</a> - {{this.name}} {{this.surname}} <a href="/feed/connect/{{this._id}}" class="btn btn-primary btn-sm">Follow</a>
     {{/each}}
 </div>
