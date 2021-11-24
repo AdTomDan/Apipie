@@ -47,7 +47,7 @@ router.route("/post/comment/:id")
 
 router.route("/connect")
 .get((req,res)=>{
-    res.render("feed/connect")
+    res.render("feed/connect",{userInfo:req.session.loggedInUser})
 })
 .post(async (req, res) => {
     try {
@@ -74,7 +74,7 @@ router.route("/connect/:id")
 
     let followFriend = await User.findByIdAndUpdate(currentUser._id,{$push:{friends:friendToFollow}},{new:true})
     
-    res.redirect("/feed/connect",)
+    res.redirect("/feed/connect",{userInfo:req.session.loggedInUser})
     } catch (err) {
         console.log(err)
     }
