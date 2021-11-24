@@ -1,12 +1,20 @@
 {{>navbar userInfo=userInfo}}
 
-<h1>{{currentUser.name}}'s Feed - <span class="badge bg-primary"><a href="/feed/connect" class="link-light text-decoration-none">Connect</a></span></h1>
+<div class="jumbotron text-center">
 
-<form action="/feed" method="POST" class="border border-2 p-2" enctype="multipart/form-data" >
+<h1 class="display-4">{{currentUser.name}}'s Feed</h1>
+ <p class="lead">Feeling hungry? Well, you will be soon....</p>
+  <hr class="my-4">
+  <p>Connect with your friends to see their posts!</p>
+  <p class="lead">
+    <a href="/feed/connect" class="btn btn-primary">Connect</a>
+  </p>
+</div>
+
+<form action="/feed" method="POST" class="border border-2 p-2 bg-light" enctype="multipart/form-data" >
 <div class="form-group">
     <input type="text" class="form-control" id="text" aria-describedby="text" placeholder="Post" name="text">
 </div>
-
 <div class="mb-3">
   <label for="formFile" class="form-label">Upload an Image</label>
   <input class="form-control" type="file" id="formFile" name="imgUrl">
@@ -16,30 +24,29 @@
 
 <div class="allPosts">
     {{#each allPosts}}
-    <div class="post border border-2 p-3 mb-3">
-        <h4><img src="{{user.profilePhoto}}" alt="{{user.username}}" width="25px" height="25px"> <a href="/profile/{{user._id}}">{{user.username}}</a></h4>
-        <i>{{formatDate createdAt}}</i>
+    <div class="post border border-2 p-3 mb-3 bg-light">
+        <h4><img src="{{user.profilePhoto}}" alt="{{user.username}}" width="25px" height="25px"> <a href="/profile/{{user._id}}" class="link-dark text-decoration-none">{{user.username}}</a></h4>
+        <i class="text-muted">{{formatDate createdAt}}</i>
         <p>{{text}}</p>
         {{#if postPhoto}}
-        <br>    
         <img src="{{postPhoto}}" class="postPhoto">
         {{/if}}
         <br>
-        <a class="like-button" href="/feed/post/like/{{_id}}">&#128151</a> {{likeCount}}
+        <a class="like-button" href="/feed/post/like/{{_id}}">&#129383</a> {{likeCount}}
         <br>
-        <p>Liked by:{{#each likes}} <a href="/profile/{{this._id}}">{{this.username}}</a>, {{/each}}</p>
+        <p>Liked by:{{#each likes}} <a href="/profile/{{this._id}}" class="link-dark text-decoration-none">{{this.username}}</a>, {{/each}}</p>
         <hr>
-        <p>COMMENTS: </p>
-        <ul>
+        <p>Comments</p>
+        <ul class="list-group list-group-flush">
             {{#each comments}}
-                <li>{{this.content}} - <a href="/profile/{{this.author._id}}"><i>{{this.author.name}}</i></a> <img width="20px" height="20px" src="{{this.author.profilePhoto}}" alt="{{this.author.name}}"></li>
+                <li class="list-group-item"><a href="/profile/{{this.author._id}}" class="link-dark text-decoration-none"><i>{{this.author.name}}</i></a> <img width="20px" height="20px" src="{{this.author.profilePhoto}}" alt="{{this.author.name}}"> {{this.content}}</li>
             {{/each}}
         </ul>
         <hr>
        
             <form class="comment-form" action="/feed/post/comment/{{_id}}" method="POST">
                 <div class="input-group">
-                    <img src="{{../userInfo.profilePhoto}}" alt="" class="img-thumbnail" width="5%">
+                    <img src="{{../userInfo.profilePhoto}}" alt="" class="img-thumbnail" width="50px">
                     <textarea class="form-control" aria-label="With textarea" name="content" placeholder="Comment"></textarea>
                     <button class="btn btn-secondary mt-1" type="submit">Post Comment</button>
                     </div>
