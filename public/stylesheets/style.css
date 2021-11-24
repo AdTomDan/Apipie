@@ -94,18 +94,13 @@ a {
   width: 500px;
   margin-right: 50px;
 }
-<<<<<<< HEAD
 
 .signup-block {
   padding-top: 10%;
-=======
-.login-block {
->>>>>>> 549a04fd7d53aa88539e9005d4b0dd93920dfa6d
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-<<<<<<< HEAD
 
 }
 .signup-form {
@@ -125,10 +120,4 @@ a {
 a {
   text-decoration: none;
   color: black;
-=======
-}
-.loginForm {
-  display: flex;
-  flex-direction: column;
->>>>>>> 549a04fd7d53aa88539e9005d4b0dd93920dfa6d
 }
