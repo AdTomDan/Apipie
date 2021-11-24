@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
+const checkFollowing = require("../middleware/checkFollowing")
 const fileUploader = require("../config/cloudinary")
 
 const User = require("../models/User.model")
@@ -59,18 +60,11 @@ router.route("/connect")
       const currentUser = await User.findById(req.session.loggedInUser._id)
       console.log("currentUser: ", currentUser)
 
-      let userFriends = []
-      let userNotFriends = []
+      const listOfFOllowers = checkFollowing(users, currentUser)
 
-      users.forEach(user=>{
-          if(currentUser.friends.includes(user._id)) {
-              userFriends.push(user)
-          } else {
-              userNotFriends.push(user)
-          }
-      })
+      console.log("listOfFOllowers: ", listOfFOllowers)
 
-      res.render("feed/connect",{userFriends,userNotFriends})
+      res.render("feed/connect",{userFriends: listOfFOllowers.userFriends,userNotFriends: listOfFOllowers.userNotFriends})
       } catch (err) {
         console.log(err);
     }
