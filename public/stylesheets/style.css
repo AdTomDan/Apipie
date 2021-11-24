@@ -1,8 +1,8 @@
 body {
   margin: 0px;
-  font: 17px "Roboto", Helvetica, Arial, sans-serif;
+  font: 16px "Roboto", Helvetica, Arial, sans-serif;
   background-color: #ffecea;
-  padding: 0 25%;
+  padding: 1% 5%;
 }
 
 a {
