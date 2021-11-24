@@ -91,7 +91,7 @@ router
         steps: splitSteps,
         recipePhoto: req.file.path,
       });
-      res.redirect("/library",{userInfo: req.session.loggedInUser});
+      res.redirect("/library");
     } catch (err) {
       console.log(err);
     }
