@@ -32,14 +32,14 @@
         <img src="{{postPhoto}}" class="postPhoto">
         {{/if}}
         <br>
-        <a class="like-button" href="/feed/post/like/{{_id}}">&#128151</a> {{likeCount}}
+        <a class="like-button" href="/feed/post/like/{{_id}}">&#129383</a> {{likeCount}}
         <br>
-        <p>Liked by:{{#each likes}} <a href="/profile/{{this._id}}">{{this.username}}</a>, {{/each}}</p>
+        <p>Liked by:{{#each likes}} <a href="/profile/{{this._id}}" class="link-dark text-decoration-none">{{this.username}}</a>, {{/each}}</p>
         <hr>
-        <p>COMMENTS: </p>
-        <ul>
+        <p>Comments</p>
+        <ul class="list-group list-group-flush">
             {{#each comments}}
-                <li>{{this.content}} - <a href="/profile/{{this.author._id}}" class="link-dark text-decoration-none"><i>{{this.author.name}}</i></a> <img width="20px" height="20px" src="{{this.author.profilePhoto}}" alt="{{this.author.name}}"></li>
+                <li class="list-group-item"><a href="/profile/{{this.author._id}}" class="link-dark text-decoration-none"><i>{{this.author.name}}</i></a> <img width="20px" height="20px" src="{{this.author.profilePhoto}}" alt="{{this.author.name}}"> {{this.content}}</li>
             {{/each}}
         </ul>
         <hr>
