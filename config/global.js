@@ -17,7 +17,7 @@ const hbs = require("hbs");
 
 hbs.registerHelper('formatDate', function(dateString) {
   return new hbs.SafeString(
-      moment(dateString).format("LLLL").toUpperCase()
+      moment(dateString).format("LLLL")
   );
 });
 
