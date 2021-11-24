@@ -49,6 +49,7 @@ router.route("/search").get(async (req, res) => {
     console.log("heeeyy IM HEREEEE");
     console.log(req.query);
     const {search} = req.query
+    console.log(search);
     // const query = req.query.q1;
     const recipes = await Recipe.find({
       name: { $regex: search, $options: "i" },
