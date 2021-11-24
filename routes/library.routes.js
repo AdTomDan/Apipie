@@ -20,14 +20,14 @@ router.route("/details/:id").get(async (req, res) => {
       showEdit = true; // IF SESSION === AUTHOR, WE CREATE A VARIABLE TO DISPLAY "EDIT PIE" BUTTON
       showDelete = true;
     }
-    res.render("library/details", { recipe, showEdit, showDelete,userInfo: req.session.loggedInUser._id });
+    res.render("library/details", { recipe, showEdit, showDelete,userInfo: req.session.loggedInUser });
   } catch (err) {
     console.log(err);
   }
 });
 
 router.route("/list").get((req, res) => {
-  res.render("library/list",{userInfo: req.session.loggedInUser._id});
+  res.render("library/list",{userInfo: req.session.loggedInUser});
 });
 
 // PIE OF THE WEEK PAGE
@@ -38,7 +38,7 @@ router
     const randomRecipe = await Recipe.aggregate([{ $sample: { size: 1 } }]);
     res.render("library/library", {
       randomRecipe: randomRecipe[0],
-      userInfo: req.session.loggedInUser._id,
+      userInfo: req.session.loggedInUser,
     });
   })
 
@@ -54,7 +54,7 @@ router.route("/search").get(async (req, res) => {
     const recipes = await Recipe.find({
       name: { $regex: search, $options: "i" },
     }).populate("author", "username");
-    res.render("library/list", { recipes,userInfo: req.session.loggedInUser._id });
+    res.render("library/list", { recipes,userInfo: req.session.loggedInUser});
   } catch (err) {
     console.log(err);
   }
@@ -65,7 +65,7 @@ router.route("/search").get(async (req, res) => {
 router
   .route("/create")
   .get((req, res) => {
-    res.render("library/create-recipe",{userInfo: req.session.loggedInUser._id});
+    res.render("library/create-recipe",{userInfo: req.session.loggedInUser});
   })
   .post(fileUploader.single("imgUrl"), async (req, res) => {
     try {
@@ -91,7 +91,7 @@ router
         steps: splitSteps,
         recipePhoto: req.file.path,
       });
-      res.redirect("/library",{userInfo: req.session.loggedInUser._id});
+      res.redirect("/library",{userInfo: req.session.loggedInUser});
     } catch (err) {
       console.log(err);
     }
@@ -107,7 +107,7 @@ router
       const recipe = await Recipe.findById(id).populate("author", "username");
       res.render("library/edit-recipe", {
         recipe,
-        userInfo: req.session.loggedInUser._id,
+        userInfo: req.session.loggedInUser,
       });
     } catch (err) {
       console.log(err);
@@ -136,7 +136,7 @@ router
         recipePhoto: req.file.path,
       });
       const id = req.params.id;
-      res.redirect(`/library/details/${id}`,{userInfo: req.session.loggedInUser._id});
+      res.redirect(`/library/details/${id}`,{userInfo: req.session.loggedInUser});
     } catch (err) {
       console.log(err);
     }
@@ -146,10 +146,10 @@ router.route("/delete/:id").get(async (req, res) => {
   try {
     let deletedRecipe = await Recipe.findByIdAndDelete(req.params.id);
 
-    res.redirect("/library",{userInfo: req.session.loggedInUser._id});
+    res.redirect("/library",{userInfo: req.session.loggedInUser});
   } catch (err) {
     console.log(err);
-    res.render("/library",{userInfo: req.session.loggedInUser._id});
+    res.render("/library",{userInfo: req.session.loggedInUser});
   }
 });
 
