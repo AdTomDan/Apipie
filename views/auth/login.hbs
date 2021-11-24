@@ -1,5 +1,8 @@
-<h1>Login</h1>
-<form action="/auth" method="POST">
+<div class="login-block">
+<img class="logo-img" src="/images/pie_image_login.png" alt="Cherry Pie Image"/>
+<a class="active" href="/"><img class="logo-img" src="/images/logo.png" alt="logo!"/></a>
+
+<form class="loginForm" action="/auth" method="POST">
 
   <label for="username">Username: </label>
   <input type="text" name="username" placeholder="pepipalotes" required>
@@ -11,6 +14,7 @@
 </form>
 
 Hungry and without an account? <a href="/auth/signup">Sign up</a>
+</div>
 
 {{#if errorMessage}}
   <p>{{errorMessage}}</p>
