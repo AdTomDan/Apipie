@@ -1,8 +1,21 @@
+.bg-colour {
+  background-color: rgb(255, 225, 157);
+}
+
+:root {
+  --soft-pink: #FDEFEF;
+  --skin-colour: #F4DFD0;
+  --sand-colour: #DAD0C2;
+  --light-brown: #CDBBA7;
+
+}
+
 body {
   margin: 0px;
   font: 16px "Roboto", Helvetica, Arial, sans-serif;
-  background-color: #ffecea;
+  background-color: var(--soft-pink);
   padding: 1% 5%;
+  /* background-color: var(--soft-pink); */
 }
 
 a {
