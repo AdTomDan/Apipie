@@ -1,5 +1,9 @@
 {
   "name": "project2-template",
+  "engines": {
+    "node": "16",
+    "npm": "8"
+  },
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -18,7 +22,6 @@
     "hbs": "^4",
     "http-errors": "^1",
     "moment": "^2.29.1",
-    "mongodb": "^4.2.0",
     "mongoose": "^5",
     "morgan": "^1",
     "multer": "^1",
