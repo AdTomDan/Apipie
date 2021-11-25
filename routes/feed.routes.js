@@ -49,18 +49,18 @@ router.route("/connect")
 .get((req,res)=>{
     res.render("feed/connect",{userInfo:req.session.loggedInUser})
 })
-.post(async (req, res) => {
+router.route("/connect-search")
+.get(async (req, res) => {
     try {
-      const {search} = req.body;
+      const {search} = req.query;
       const users = await User.find({
         name: { $regex: search, $options: "i" },
       })
-
       const currentUser = await User.findById(req.session.loggedInUser._id)
 
       const listOfFOllowers = checkFollowing(users, currentUser)
 
-      res.render("feed/connect",{userFriends: listOfFOllowers.userFriends,userNotFriends: listOfFOllowers.userNotFriends,userInfo:req.session.loggedInUser})
+      res.render("feed/connect",{userFriends: listOfFOllowers.userFriends,userNotFriends: listOfFOllowers.userNotFriends,userInfo:req.session.loggedInUser,search})
       } catch (err) {
         console.log(err);
     }
