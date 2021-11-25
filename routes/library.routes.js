@@ -46,15 +46,11 @@ router
 
 router.route("/search").get(async (req, res) => {
   try {
-    console.log("heeeyy IM HEREEEE");
-    console.log(req.query);
     const {search} = req.query
-    console.log(search);
-    // const query = req.query.q1;
     const recipes = await Recipe.find({
       name: { $regex: search, $options: "i" },
     }).populate("author", "username");
-    res.render("library/list", { recipes,userInfo: req.session.loggedInUser});
+    res.render("library/list", { recipes,userInfo: req.session.loggedInUser,search});
   } catch (err) {
     console.log(err);
   }
