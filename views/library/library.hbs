@@ -1,13 +1,13 @@
 {{>navbar userInfo=userInfo}}
 
 <br>
-<h1><a class="btn btn-success btn-xl btn-block" href="/library/create">Create Recipe</a></h1>
+<h1><a class="btn btn-success btn-xl btn-block" href="/library/create">Add Recipe</a></h1>
 <hr>
 <div class="container recipe-search">
     <form action="/library/search" method="GET">
-    <div class="form-label-group d-flex">
-        <input type="text" id="inputSearch" class="form-control" name="search" placeholder="Search by keywords" required>
-        <button class="btn" type="submit">🔎</button>
+    <div class="form-label-group d-flex bg-white border border-secondary ">
+        <input type="text" style="border: 0px;" id="inputSearch" class="form-control" name="search" placeholder="Search by keywords" required>
+        <button style="border: 0px;" class="btn" type="submit">🔎</button>
         <label for="inputSearch"></label>
     </div>
     </form>
@@ -15,29 +15,30 @@
 <hr>
 <div class="row p-1 text-center">
     <div class="col">
-        <a class="btn btn-dark" href="/library/search?search=pie">All Pies &#129383</a>
+        <a class="btn btn-dark text-center" href="/library/search?search=pie">All Pies <br> &#129383</a>
     </div>
     <div class="col">
-        <a class="btn btn-secondary" href="/library/search?search=pumpkin">Pumpkin &#127875</a>
+        <a class="btn btn-secondary" href="/library/search?search=pumpkin">Pumpkin <br> &#127875</a>
     </div>
     <div class="col">
-        <a class="btn btn-secondary" href="/library/search?search=cherry">Cherry &#127826</a>
+        <a class="btn btn-secondary" href="/library/search?search=cherry">Cherry <br> &#127826</a>
     </div>
 </div>
 <div class="row p-1 text-center">
     <div class="col">
-        <a class="btn btn-secondary" href="/library/search?search=pork">Pork &#129385</a>
+        <a class="btn btn-secondary" href="/library/search?search=pork">Pork <br> &#129385</a>
     </div>
     <div class="col">
-        <a class="btn btn-secondary" href="/library/search?search=apple">Apple &#127823</a>
+        <a class="btn btn-secondary" href="/library/search?search=apple">Apple <br> &#127823</a>
     </div>
     <div class="col">
-        <a class="btn btn-secondary" href="/library/search?search=chocolate">Chocolate &#127851</a>
+        <a class="btn btn-secondary" href="/library/search?search=chocolate">Chocolate <br> &#127851</a>
     </div>
 </div>    
 <hr>
 <div class="text-center">
-    <h3>Pie of the week: {{this.name}}</h3>
+    <h5 class="mb-2">Pie of the week:</h5>
+    <h3 class="mt-0 p-2" style="background-color: #ffcc7b;">Glenda's Winter Pumpking Pie </h3>
     <img src="https://tastesbetterfromscratch.com/wp-content/uploads/2015/10/Pumpkin-Pie-5-500x500.jpg" class="rounded-circle" alt="Pumpkin Pie" width="150px" height="150px">
 </div>
 <br>

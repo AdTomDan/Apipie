@@ -1,15 +1,22 @@
 {{>navbar userInfo=userInfo}}
 
-<h1>Hey there, {{name}}</h1>
-<br>
-<h3>What do you feel like today?</h3>
-<br>
-<div class="welcome-buttons">
-<a class="btn btn-light" href="/library">Get insPIEred</a>
-<br>
-<a class="btn btn-light" href="/feed">Feed</a>
-<br>
-<a class="btn btn-light"href="/profile/{{userInfo._id}}">View my profile</a>
-<br>
-<a class="btn btn-light" href="/logout">Logout</a>
+
+<div class="container w-100 d-flex flex-column align-items-center">
+
+    <h1 class="mt-4 mb-4">Welcome, {{name}}</h1>
+    <h5 style="font-size: small;">What are we doing today?</h5>
+
+</div>
+
+
+<div class="w-100 d-flex justify-content-center">
+<div class=" d-flex flex-column align-items-center w-100 p-3" style="width: auto;">
+    <a class="btn btn-light mw-100 border border-secondary" style="width: 90%;" href="/library">Get me insPiered</a>
+    <br>
+    <a class="btn btn-light mw-50 border border-secondary" style="width: 90%;" href="/feed">Feed</a>
+    <br>
+    <a class="btn btn-primary mw-50 border border-secondary"  style="width: 90%;" href="/profile/{{userInfo._id}}">View my profile</a>
+    <br>
+    <a class="btn btn-danger mw-50 border border-secondary"  style="width: 90%;" href="/logout">Logout</a>
+</div>
 </div>
