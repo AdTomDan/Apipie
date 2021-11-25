@@ -5,11 +5,10 @@
 <hr>
 <div class="container recipe-search">
     <form action="/library/search" method="GET">
-    <div class="form-label-group d-flex bg-white border border-secondary ">
-        <input type="text" style="border: 0px;" id="inputSearch" class="form-control" name="search" placeholder="Search by keywords" required>
-        <button style="border: 0px;" class="btn" type="submit">🔎</button>
-        <label for="inputSearch"></label>
-    </div>
+        <div class="input-group mb-4">             
+            <input type="text" style="border: 0px;" id="inputSearch" aria-describedby="button-addon5" class="form-control border" name="search" placeholder="Search by keywords" required>
+            <button id="button-addon5" style="border: 0px;" class="btn btn-light border" type="submit">🔎</button>
+        </div>
     </form>
 </div>
 <hr>
