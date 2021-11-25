@@ -1,41 +1,37 @@
 {{>navbar userInfo=userInfo}}
 
-<h1>Edit {{this.name}}</h1>
+<h1>Edit {{recipe.name}}</h1>
 
-<form action="/library/edit/{{_id}}" method="POST" enctype="multipart/form-data" >
+<form action="/library/edit/{{recipe._id}}" method="POST" enctype="multipart/form-data" class="border border-2 p-2 bg-light">
 
   <label for="name">Name: </label>
-  <input type="text" name="name" value="{{name}}" required>
-  <br>
-  <br>
-  <label for="recipePhoto"></label>
-  <input type="file" name="imgUrl"/>
-  <br>
-  <br>
+  <input class="form-control" type="text" name="name" value="{{recipe.name}}" required>
+
+  <div class="form-group">
+    <div class="mb-3">
+    <label class="form-label" for="imgUrl"></label>
+    <input class="form-control" type="file" id="formFile" name="imgUrl" />
+    </div>
+  </div>
   <label for="prepTime">Prep Time: </label>
-  <input type="number" name="prepTime" value="{{prepTime}}" required>
-  <br>
+  <input class="form-control" type="number" name="prepTime" value="{{recipe.prepTime}}" required>
   <label for="cookingTime">Cooking Time: </label>
-  <input type="number" name="cookingTime" value="{{cookingTime}}" required>
-  <br>
+  <input class="form-control" type="number" name="cookingTime" value="{{recipe.cookingTime}}" required>
   <label for="difficulty">Difficulty:</label>
-  <br>
-  <select name="difficulty" id="difficulty" value="{{difficulty}}">
+  <select class="form-select" name="difficulty" id="difficulty" value="{{recipe.difficulty}}">
     <option value="Easy">Easy</option>
     <option value="Intermediate">Intermediate</option>
     <option value="Advanced">Advanced</option>
   </select>
-  <br>
   <label for="ingredients">Ingredients: </label>
-  <input type="text" name="ingredients" value="{{ingredients}}" required>
-  <br>
+  <input class="form-control" type="text" name="ingredients" value="{{recipe.ingredients}}" required>
   <label for="steps">Steps: </label>
-  <input type="text" name="steps" value="{{steps}}" required>
+  <input class="form-control" type="text" name="steps" value="{{recipe.steps}}" required>
   <br>
-  <button type="submit">Update details</button>
+  <button class="btn btn-primary" type="submit">Update details</button>
 </form>
 
-<a href="/library">Back</a>
+<a class="btn btn-light mb-3 border" href="/library/details/{{recipe._id}}">Back</a>
 
 {{#if errorMessage}}
   <p>{{errorMessage}}</p>
