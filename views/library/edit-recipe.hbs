@@ -10,7 +10,7 @@
   <div class="form-group">
     <div class="mb-3">
     <label class="form-label" for="imgUrl"></label>
-    <input class="form-control" type="file" id="formFile" name="imgUrl" />
+    <input class="form-control" type="file" id="formFile" name="imgUrl" required/>
     </div>
   </div>
   <label for="prepTime">Prep Time: </label>
@@ -24,9 +24,9 @@
     <option value="Advanced">Advanced</option>
   </select>
   <label for="ingredients">Ingredients: </label>
-  <input class="form-control" type="text" name="ingredients" value="{{recipe.ingredients}}" required>
+  <input class="form-control" type="text" name="ingredients" value="{{#each recipe.ingredients}}{{#if @last}}{{this}}{{else}}{{this}}, {{/if}}{{/each}}" required>
   <label for="steps">Steps: </label>
-  <input class="form-control" type="text" name="steps" value="{{recipe.steps}}" required>
+  <input class="form-control" type="text" name="steps" value="{{#each recipe.steps}}{{#if @last}}{{this}}{{else}}{{this}}/{{/if}}{{/each}}" required>
   <br>
   <button class="btn btn-primary" type="submit">Update details</button>
 </form>

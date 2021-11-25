@@ -1,10 +1,9 @@
 {{>navbar userInfo=userInfo}}
 
 <br>
-<h1>Recipes - <a class="btn btn-success btn-xl btn-block" href="/library/create">Create Recipe!</a></h1>
+<h1><a class="btn btn-success btn-xl btn-block" href="/library/create">Create Recipe!</a></h1>
 <hr>
 <div class="container recipe-search">
-    <h2>Search recipes</h2>
     <form action="/library/search" method="GET">
     <div class="form-label-group d-flex">
         <input type="text" id="inputSearch" class="form-control" name="search" placeholder="Search by keywords" required>
@@ -13,10 +12,7 @@
     </div>
     </form>
 </div>
-
 <hr>
-<h3>Popular filters</h3>
-<br>
 <div class="row">
     <div class="col">
         <a class="btn btn-dark" href="/library/search?search=pie">All Pies</a>
