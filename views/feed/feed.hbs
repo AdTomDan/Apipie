@@ -30,15 +30,16 @@
         {{#if postPhoto}}
         <img src="{{postPhoto}}" class="postPhoto">
         {{/if}}
-        <br>
-        <a class="like-button" href="/feed/post/like/{{_id}}">&#129383</a> {{likeCount}}
+        <br><div style="display: flex, align-items: center">
+        <a class="like-button" href="/feed/post/like/{{_id}}"><img class="like-hat" src="/images/welcome.png" alt=""></a> {{likeCount}}
         <br>
         <p>Liked by:{{#each likes}} <a href="/profile/{{this._id}}" class="link-dark text-decoration-none">{{this.username}}</a>, {{/each}}</p>
+        </div>
         <hr>
         <p>Comments</p>
         <ul class="list-group list-group-flush">
             {{#each comments}}
-                <li class="list-group-item d-flex align-items-center"><img width="30px" height="30px" class="rounded-circle" style="margin-right: 5px;" src="{{this.author.profilePhoto}}" alt="{{this.author.name}}"><a href="/profile/{{this.author._id}}" class="link-dark text-decoration-none"><i>{{this.author.name}} </i> </a>:   {{this.content}}</li>
+                <li class="list-group-item d-flex align-items-center"><img width="30px" height="30px" class="rounded-circle" style="margin-right: 5px;" src="{{this.author.profilePhoto}}" alt="{{this.author.name}}"><a href="/profile/{{this.author._id}}" class="link-dark text-decoration-none"><strong>{{this.author.username}}</a></strong> &nbsp; {{this.content}}</li>
             {{/each}}
         </ul>
         <hr>

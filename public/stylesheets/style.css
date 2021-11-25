@@ -11,8 +11,13 @@ a {
   color: #00b7ff;
 }
 
-.main-div{
-  margin-top: 25%;
+.main-div {
+  margin-top: 13vh;
+}
+
+.chefHat {
+  width: 30%;
+  margin-top: 10vh;
 }
 
 .right-side {
@@ -26,10 +31,15 @@ a {
 }
 
 .postPhoto {
-  width: 200px;
+  width: 100%;
 }
 
-.recipePhoto{
+.like-hat {
+  height: 3vh;
+  margin: 1vh;
+}
+
+.recipePhoto {
   width: 200px;
 }
 
@@ -79,7 +89,6 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
 .signup-form {
   display: flex;
@@ -99,7 +108,7 @@ a {
   color: black;
 }
 
-.btn-space{
+.btn-space {
   margin: -4vw 4vw 0 4vw;
 }
 
@@ -107,15 +116,34 @@ a {
   width: 50%;
 }
 
-
-.welcome-buttons{
+.welcome-buttons {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
+@media (max-width: 600px) {
+  .container .form-control {
+    width: 100%;
+  }
+}
 
-.btn-orange, .btn-orange:hover, .btn-orange:active, .btn-orange:visited {
+@media (min-width: 600px) {
+  body {
+    /* height: 100% !important; */
+    /* margin: -15vh !important; */
+    padding: 0 20% !important;
+  }
+  .chefHat {
+    width: 20%;
+    margin-top: 8vh;
+  }
+}
+
+.btn-orange,
+.btn-orange:hover,
+.btn-orange:active,
+.btn-orange:visited {
   background-color: #ffcc7b !important;
 }
 
