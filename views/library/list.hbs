@@ -16,8 +16,10 @@
       <img src="{{this.recipePhoto}}" class="card-img-top" alt="{{this.name}}">
       <div class="card-body">
         <h5 class="card-title">{{this.name}}</h5>
-        <p class="card-text">{{this.author.username}}</p>
-        <a href="/library/details/{{this.id}}" class="btn btn-orange">See details</a>
+        <p class="card-text">By: <a href="/profile/{{this.author._id}}">{{this.author.username}}</a></p>
+        <p class="card-text">Difficulty: ·{{this.difficulty}}</p>
+        <p class="card-text">Taste: {{this.type}}</p>
+        <a href="/library/details/{{this.id}}" class="btn btn-primary">See details</a>
       </div>
     </div>
     {{/each}}
