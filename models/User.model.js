@@ -25,6 +25,7 @@ const userSchema = new Schema({
 	},
 	profilePhoto: {
 		type: String,
+		default: "http://www.newdesignfile.com/postpic/2010/11/emoticon-eating-pie_324907.jpg"
 	},
 	favourites: [
 		{
