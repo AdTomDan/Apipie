@@ -4,12 +4,11 @@
         <div class="row p-2">
             <h2>{{recipe.name}}</h2>
             <hr>
-            <i>Author: <a href="/profile/{{recipe.author._id}}" class="link-dark text-decoration-none">{{this.username}}{{recipe.author.username}}</a></i>
-            <img src="{{recipe.recipePhoto}}" style="width:200px">
+            <i>Author: <a href="/profile/{{recipe.author._id}}" class="link-dark">{{this.username}}{{recipe.author.username}}</a></i>
+            <img class="pt-2" src="{{recipe.recipePhoto}}" style="width:200px">
         </div>
     </div>
 </div>
-<br>
 <div class="accordion" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
