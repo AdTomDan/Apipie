@@ -1,11 +1,15 @@
 {{>navbar userInfo=userInfo}}
 
-<h1>Welcome, {{name}}</h1>
-<hr>
-<a href="/library">Get insPIEred</a>
-<hr>
-<a href="/feed">Feed</a>
-<hr>
-<a href="/profile/{{userInfo._id}}">View my profile</a>
-<hr>
-<a href="/logout">Logout</a>
+<h1>Hey there, {{name}}</h1>
+<br>
+<h3>What do you feel like today?</h3>
+<br>
+<div class="welcome-buttons">
+<a class="btn btn-light" href="/library">Get insPIEred</a>
+<br>
+<a class="btn btn-light" href="/feed">Feed</a>
+<br>
+<a class="btn btn-light"href="/profile/{{userInfo._id}}">View my profile</a>
+<br>
+<a class="btn btn-light" href="/logout">Logout</a>
+</div>

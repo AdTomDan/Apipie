@@ -39,15 +39,15 @@
         <p>Comments</p>
         <ul class="list-group list-group-flush">
             {{#each comments}}
-                <li class="list-group-item d-flex align-items-center"><img width="30px" height="30px" class="rounded-circle" style="margin-right: 5px;" src="{{this.author.profilePhoto}}" alt="{{this.author.name}}"><a href="/profile/{{this.author._id}}" class="link-dark text-decoration-none"><i>{{this.author.name}}:</i></a>{{this.content}}</li>
+                <li class="list-group-item d-flex align-items-center"><img width="30px" height="30px" class="rounded-circle" style="margin-right: 5px;" src="{{this.author.profilePhoto}}" alt="{{this.author.name}}"><a href="/profile/{{this.author._id}}" class="link-dark text-decoration-none"><i>{{this.author.name}} </i> </a>:   {{this.content}}</li>
             {{/each}}
         </ul>
         <hr>
         <form class="comment-form" action="/feed/post/comment/{{_id}}" method="POST">
           <div class="input-group">
               <img src="{{../userInfo.profilePhoto}}" alt="" class="img-thumbnail" width="50px">
-              <textarea class="form-control" aria-label="With textarea" name="content" placeholder="Comment" style="resize: none"></textarea>
-              <button class="btn btn-secondary mt-1" type="submit">Post Comment</button>
+              <input class="form-control" aria-label="With textarea" name="content" placeholder="Comment" style="resize: none">
+              <button class="btn btn-secondary ml-1" type="submit">Post Comment</button>
           </div>
         {{#ifEquals ../currentUser.username user.username}}
             <a href="/feed/delete/{{_id}}" class="btn btn-danger mt-2">Delete</a>
