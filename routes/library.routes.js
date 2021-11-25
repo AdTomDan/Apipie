@@ -144,7 +144,7 @@ router.route("/delete/:id").get(async (req, res) => {
   try {
     let deletedRecipe = await Recipe.findByIdAndDelete(req.params.id);
 
-    res.redirect("/library",{userInfo: req.session.loggedInUser});
+    res.redirect("/library");
   } catch (err) {
     console.log(err);
     res.render("/library",{userInfo: req.session.loggedInUser});
