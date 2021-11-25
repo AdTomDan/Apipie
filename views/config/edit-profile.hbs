@@ -1,6 +1,5 @@
-<br>
-<br>
-<h3>Please, introduce your new profile details: </h3>
+{{>navbar userInfo=userInfo}}
+<h3 class="pt-2">Please, introduce your new profile details: </h3>
 <br>
 <form
   class="border border-2 p-2 bg-light"
@@ -63,10 +62,6 @@
   <button class="btn btn-primary" type="submit">Submit new changes</button>
 </form>
 </div>
-<a href="/welcome">Back</a>
-<br>
-<br>
-<br>
 {{#if errorMessage}}
   <p>{{errorMessage}}</p>
 {{/if}}

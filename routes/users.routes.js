@@ -15,6 +15,7 @@ router
       const idUser = req.params.id;
       var canEdit = false;
       const user = await User.findById(idUser);
+      console.log("user: ",user)
 
       res.render("config/edit-profile", {
         user,

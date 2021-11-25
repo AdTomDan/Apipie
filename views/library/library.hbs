@@ -1,37 +1,39 @@
 {{>navbar userInfo=userInfo}}
 
 <br>
-<h1>Recipes</h1>
+<h1>Recipes - <a class="btn btn-success btn-xl btn-block" href="/library/create">Create Recipe!</a></h1>
 <hr>
-<div>
-<h3>Pie of the week: {{this.name}}</h3>
-<img src="https://tastesbetterfromscratch.com/wp-content/uploads/2015/10/Pumpkin-Pie-5-500x500.jpg" alt="Pumpkin Pie" width="150px" height="150px">
-</div>
-<br>
-<form action="/library/search" method="GET">
-<div class="form-label-group d-flex">
-  <input type="text" id="inputSearch" class="form-control" name="search" placeholder="Search by keywords" required>
-  <button type="submit">🔎</button>
-  <label for="inputSearch"></label>
-</div>
-</form>
-    <div class="d-flex justify-content-center">
-        <a class="btn btn-dark btn-ml w-100" href="/library/search?search=pie">All Pies</a> <hr>
+<div class="container recipe-search">
+    <h2>Search recipes</h2>
+    <form action="/library/search" method="GET">
+    <div class="form-label-group d-flex">
+        <input type="text" id="inputSearch" class="form-control" name="search" placeholder="Search by keywords" required>
+        <button type="submit">🔎</button>
+        <label for="inputSearch"></label>
     </div>
-    <hr>
+    </form>
+</div>
+
+<hr>
 <h3>Popular filters</h3>
-    <br>
-    <div class="d-flex justify-content-center">
-    <div class="justify-content-between">
-        <a class="btn btn-secondary btn-xl btn-space" href="/library/search?search=sweet">Sweet</a>
-        <a class="btn btn-secondary btn-xl btn-space" href="/library/search?search=butter">Butter</a>
-        <a class="btn btn-secondary btn-xl btn-space" href="/library/search?search=lactosefree">Lactose Free</a>
+<br>
+<div class="row">
+    <div class="col">
+        <a class="btn btn-dark" href="/library/search?search=pie">All Pies</a>
     </div>
+    <div class="col">
+        <a class="btn btn-secondary" href="/library/search?search=sweet">Sweet</a>
     </div>
-    <hr>
-<h3>Did we miss any recipe out?</h3>
-<a class="btn btn-success btn-xl btn-block" href="/library/create">Create Recipe!</a>
+    <div class="col">
+        <a class="btn btn-secondary" href="/library/search?search=butter">Butter</a>
+    </div>
+    <div class="col">
+        <a class="btn btn-secondary" href="/library/search?search=lactosefree">Lactose Free</a>
+    </div>
+</div>    
+<hr>
+<div class="text-center">
+    <h3>Pie of the week: {{this.name}}</h3>
+    <img src="https://tastesbetterfromscratch.com/wp-content/uploads/2015/10/Pumpkin-Pie-5-500x500.jpg" alt="Pumpkin Pie" width="150px" height="150px">
+</div>
 <br>
-<br>
-<br>
-<a class="btn btn-danger btn-sm btn-block" href="/welcome">Go back</a>

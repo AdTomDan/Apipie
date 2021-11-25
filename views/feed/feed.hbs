@@ -1,9 +1,8 @@
 {{>navbar userInfo=userInfo}}
 
 <div class="jumbotron text-center">
-
-<h1 class="display-4">{{currentUser.name}}'s Feed</h1>
- <p class="lead">Feeling hungry? Well, you will be soon....</p>
+  <h1 class="display-4">{{currentUser.name}}'s Feed</h1>
+  <p class="lead">Feeling hungry? Well, you will be soon....</p>
   <hr class="my-4">
   <p>Connect with your friends to see their posts!</p>
   <p class="lead">
@@ -46,7 +45,7 @@
         <form class="comment-form" action="/feed/post/comment/{{_id}}" method="POST">
           <div class="input-group">
               <img src="{{../userInfo.profilePhoto}}" alt="" class="img-thumbnail" width="50px">
-              <textarea class="form-control" aria-label="With textarea" name="content" placeholder="Comment" style="resize: none"></textarea>
+              <textarea class="form-control" aria-label="With textarea" name="content" placeholder="Comment" style="resize: none;"></textarea>
               <button class="btn btn-secondary mt-1" type="submit">Post Comment</button>
           </div>
         {{#ifEquals ../currentUser.username user.username}}
