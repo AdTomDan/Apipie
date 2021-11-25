@@ -1,11 +1,23 @@
 {{>navbar userInfo=userInfo}}
 <div class="container">
-    <div class="col">
-        <div class="row p-2">
             <h2>{{recipe.name}}</h2>
+            <i><img width="30px" height="30px" class="rounded-circle" style="margin-right: 5px;" src="{{userInfo.profilePhoto}}" alt="{{userInfo.name}}"> <a href="/profile/{{recipe.author._id}}" class="link-dark text-decoration-none">{{this.username}}{{recipe.author.username}}</a></i>
             <hr>
-            <i>Author: <a href="/profile/{{recipe.author._id}}" class="link-dark">{{this.username}}{{recipe.author.username}}</a></i>
-            <img class="pt-2" src="{{recipe.recipePhoto}}" style="width:200px">
+    <div class="row">
+        <div class="col p-2">
+            
+            <img src="{{recipe.recipePhoto}}" style="width:200px">
+        </div>
+        <div class="col p-2">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Recipe Details</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{recipe.name}}</h6>
+              <p class="card-text">Prep Time: <em>{{recipe.prepTime}} mins</em></p>
+              <p class="card-text">Cooking Time: <em>{{recipe.cookingTime}} mins</em></p>
+              <p class="card-text">Difficulty: <em>{{recipe.difficulty}}</em></p>
+            </div>
+          </div>
         </div>
     </div>
 </div>

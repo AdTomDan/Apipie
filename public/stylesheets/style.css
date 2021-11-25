@@ -157,3 +157,7 @@ a {
     width: 100%;
   }
 }
+
+.btn-orange, .btn-orange:hover, .btn-orange:active, .btn-orange:visited {
+  background-color: #ffcc7b !important;
+}
