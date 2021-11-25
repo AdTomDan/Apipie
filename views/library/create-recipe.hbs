@@ -6,20 +6,32 @@
   <label for="name">Name: </label>
   <input class="form-control" type="text" name="name" required />
   <div class="form-group">
-    <div class="mb-3">
+    <div>
     <label class="form-label" for="profilePhoto"></label>
     <input class="form-control" type="file" id="formFile" name="imgUrl" required/>
     </div>
   </div>
+  <div class="row">
+    <div class="col">
   <label for="prepTime">Prep Time: </label>  
-  <input class="form-control" type="number" name="prepTime" required />
+  <input class="form-control" type="number" name="prepTime" placeholder="Minutes" required />
+</div>
+      <div class="col">
   <label for="cookingTime">Cooking Time: </label>
   <input class="form-control" type="number" name="cookingTime" placeholder="Minutes" required>
+    </div>
+  </div>
   <label for="difficulty">Difficulty:</label>
   <select class="form-select" name="difficulty" id="difficulty">
     <option value="Easy">Easy</option>
     <option value="Intermediate">Intermediate</option>
     <option value="Advanced">Advanced</option>
+  </select>
+   <label for="type">Flavour:</label>
+  <select class="form-select" name="type" id="type">
+    <option value="Sweet">Sweet</option>
+    <option value="Savoury">Savoury</option>
+    <option value="Other">Other</option>
   </select>
   <label for="ingredients">Ingredients: </label>
   <input class="form-control" type="text" name="ingredients" placeholder="Ingredients" required>
