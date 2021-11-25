@@ -2,14 +2,6 @@
   background-color: rgb(255, 225, 157);
 }
 
-:root {
-  --soft-pink: #FDEFEF;
-  --skin-colour: #F4DFD0;
-  --sand-colour: #DAD0C2;
-  --light-brown: #CDBBA7;
-
-}
-
 body {
   margin: 0px;
   font: 16px "Roboto", Helvetica, Arial, sans-serif;
@@ -17,6 +9,10 @@ body {
 
 a {
   color: #00b7ff;
+}
+
+.main-div{
+  margin-top: 25%;
 }
 
 .right-side {
@@ -118,16 +114,13 @@ a {
   justify-content: center;
 }
 
-@media (max-width: 600px) {
-  body {
-    padding: 0 5%;
-  }
-  
-  .container .form-control {
-    width: 100%;
-  }
-}
 
 .btn-orange, .btn-orange:hover, .btn-orange:active, .btn-orange:visited {
   background-color: #ffcc7b !important;
+}
+
+@media (max-width: 600px) { /* SMALL SCREENS */
+  .container .form-control {
+    width: 100%;
+  }
 }
