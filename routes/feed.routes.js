@@ -74,7 +74,7 @@ router.route("/connect/:id")
 
     let followFriend = await User.findByIdAndUpdate(currentUser._id,{$push:{friends:friendToFollow}},{new:true})
     
-    res.redirect("/feed/connect",{userInfo:req.session.loggedInUser})
+    res.redirect("/feed/connect")
     } catch (err) {
         console.log(err)
     }
@@ -112,15 +112,15 @@ router.route("/")
     try {
         const {text,image} = req.body;
         
-        const newPost = await (await Post.create({user: req.session._id,text,image,likes:[],likeCount:0,comments:[], postPhoto:req.file.path}));
-        const allPosts = await Post.find().populate("user", "username").populate("likes", "username").populate({ 
+        const newPost = await Post.create({user: req.session.loggedInUser._id,text,image,likes:[],likeCount:0,comments:[], postPhoto:req.file.path});
+        const allPosts = await Post.find().populate("user").populate("likes", "username").populate({ 
             path: 'comments',
             model: 'Comment',
             populate: {
                 path: 'author',
                 model: 'User'
             }}).sort({'createdAt': -1});
-        let currentUser = req.session.loggedInUser;
+        let currentUser = await User.findById(req.session.loggedInUser._id)
         res.render("feed/feed",{allPosts, currentUser, userInfo: req.session.loggedInUser});
     } catch (err) {
         console.log(err);

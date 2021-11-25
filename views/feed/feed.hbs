@@ -39,7 +39,7 @@
         <p>Comments</p>
         <ul class="list-group list-group-flush">
             {{#each comments}}
-                <li class="list-group-item d-flex align-items-center"><img width="30px" height="30px" class="rounded-circle" style="margin-right: 5px;" src="{{this.author.profilePhoto}}" alt="{{this.author.name}}"><a href="/profile/{{this.author._id}}" class="link-dark text-decoration-none"><i>{{this.author.name}}:</i></a> {{this.content}}</li>
+                <li class="list-group-item d-flex align-items-center"><img width="30px" height="30px" class="rounded-circle" style="margin-right: 5px;" src="{{this.author.profilePhoto}}" alt="{{this.author.name}}"><a href="/profile/{{this.author._id}}" class="link-dark text-decoration-none"><i>{{this.author.name}}:</i></a>{{this.content}}</li>
             {{/each}}
         </ul>
         <hr>
