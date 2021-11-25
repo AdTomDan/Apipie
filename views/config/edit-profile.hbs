@@ -1,57 +1,72 @@
-<h1>Please, introduce your new profile details: </h1>
-
+<br>
+<br>
+<h3>Please, introduce your new profile details: </h3>
+<br>
 <form
+  class="border border-2 p-2 bg-light"
   action="/users/profile/edit/{{user._id}}"
   method="POST"
   enctype="multipart/form-data"
 >
 
-  <label for="profilePhoto"></label>
-  <input type="file" name="imgUrl" />
+<div class="form-group">
+  <div class="mb-3">
+  <label class="form-label" for="profilePhoto"></label>
+  <input class="form-control" type="file" id="formFile" name="imgUrl" />
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <label for="name">Name: </label>
+    <input class="form-control" type="text" value="{{user.name}}" name="name" required /><br />
+  </div>
 
-  <br />
-  <br />
+  <div class="col">
+    <label for="surname">Surname: </label>
+    <input class="form-control" type="text" value="{{user.surname}}" name="surname" required /><br />
+  </div>
+</div>
 
-  <label for="name">Name: </label>
-  <input type="text" value="{{user.name}}" name="name" required /><br />
-
-  <br />
-
-  <label for="surname">Surname: </label>
-  <input type="text" value="{{user.surname}}" name="surname" required /><br />
-  <hr />
-
-  <label for="bio">Biography: </label>
-  <input type="text" value="{{user.bio}}" name="bio" required /><br />
-
-  <hr />
-
-
+<div class="row">
+  <div class="col-6">
   <label for="username">Username: </label>
-  <input type="text" name="username" value="{{user.username}}" required /><hr />
-
+  <input class="form-control" type="text" name="username" value="{{user.username}}" required />
+  </div>
+</div>
   <br />
 
-  <label for="email">Email: </label>
-  <input type="email" name="email" value="{{user.email}}" required /><br />
+<div class="form-group">
+  <label for="bio">Biography: </label>
+  <textarea class="form-control" type="text" value="{{user.bio}}" id="bio" rows="3" name="bio" required /></textarea>
+  <br/>
+</div>
 
+<hr/>
+<div class="row">
+    <div class="col">
+    <label for="email">Email: </label>
+    <input class="form-control" type="email" name="email" value="{{user.email}}" required /><br />
   <br />
+    </div>
 
-  <label for="password">Password: </label>
-  <input
-    type="password"
-    name="password"
-    id="password"
-    placeholder="Type your new password"
-  /><hr />
+  <div class="col">
+    <label for="password">Password: </label>
+    <input
+      class="form-control"
+      type="password"
+      name="password"
+      id="password"
+      placeholder="Type your new password"/> 
+  </div>
+</div>
 
-  <br />
-
-  <button type="submit">Submit new changes</button>
+  <button class="btn btn-primary" type="submit">Submit new changes</button>
 </form>
-
+</div>
 <a href="/welcome">Back</a>
-
+<br>
+<br>
+<br>
 {{#if errorMessage}}
   <p>{{errorMessage}}</p>
 {{/if}}
