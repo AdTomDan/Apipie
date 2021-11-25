@@ -1,6 +1,6 @@
 {{>navbar userInfo=userInfo}}
 
-
+<div class="d-flex flex-column justify-content-center">
 <div class="container w-100 d-flex flex-column align-items-center">
 
     <h1 class="mt-4 mb-4">Welcome, {{name}}</h1>
@@ -9,7 +9,7 @@
 </div>
 
 
-<div class="w-100 d-flex justify-content-center">
+<div class="w-100 d-flex flex-column align-items-center justify-content-center">
 <div class=" d-flex flex-column align-items-center w-100 p-3" style="width: auto;">
     <a class="btn btn-light mw-100 border border-secondary" style="width: 90%;" href="/library">Get me insPiered</a>
     <br>
@@ -18,5 +18,7 @@
     <a class="btn btn-primary mw-50 border border-secondary"  style="width: 90%;" href="/profile/{{userInfo._id}}">View my profile</a>
     <br>
     <a class="btn btn-danger mw-50 border border-secondary"  style="width: 90%;" href="/logout">Logout</a>
+<img src="/images/welcome.png" style="width: 30%; padding-top: 25%" alt="">
+</div>
 </div>
 </div>
