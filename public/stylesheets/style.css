@@ -37,8 +37,8 @@ a {
   width: 100%;
 }
 
-.like-hat {
-  height: 3vh;
+.like-pie {
+  height: 4vh;
   margin: 1vh;
 }
 
@@ -148,4 +148,10 @@ a {
 .btn-orange:active,
 .btn-orange:visited {
   background-color: #ffcc7b !important;
+}
+
+@media (max-width: 600px) { /* SMALL SCREENS */
+  .container .form-control {
+    width: 100%;
+  }
 }
