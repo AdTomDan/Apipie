@@ -74,6 +74,9 @@ router.route("/connect/:id")
 
     let followFriend = await User.findByIdAndUpdate(currentUser._id,{$push:{friends:friendToFollow}},{new:true})
     
+    const updatedCurrentUser = await User.findById(currentUser._id)
+    req.session.loggedInUser = updatedCurrentUser
+
     res.redirect("/feed/connect")
     } catch (err) {
         console.log(err)
@@ -88,6 +91,9 @@ router.route("/disconnect/:id")
 
     let unFollowFriend = await User.findByIdAndUpdate(currentUser._id,{$pull:{friends:friendToUnFollow}},{new:true})
     
+    const updatedCurrentUser = await User.findById(currentUser._id)
+    req.session.loggedInUser = updatedCurrentUser
+
     res.redirect("/feed/connect")
     } catch (err) {
         console.log(err)
