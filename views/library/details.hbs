@@ -1,38 +1,54 @@
 {{>navbar userInfo=userInfo}}
-
-<div>
-    <p>{{recipe.name}}</p>
-    <hr>
-    <p>Author: {{recipe.author.username}}</p>
-    <img src="{{recipe.image}}">
-    <details open><summary>Ingredients</summary>
-    <ul>
-        {{#each recipe.ingredients}}
-        <li>
-            {{this}}
-            </li>
-        {{/each}}
-
-    </ul>
-    </details>
-    <details open><summary>Steps</summary>
-    <ol>
-        {{#each recipe.steps}}
-        <li>
-            {{this}}
-            </li>
-        {{/each}}
-
-    </ol>
-    </details>
-    {{#if showDelete}}
-    <hr>
-    <a href="/library/delete/{{recipe._id}}">Delete Pie</a>
-    {{/if}}
+<div class="container">
+    <div class="col">
+        <div class="row p-2">
+            <h2>{{recipe.name}}</h2>
+            <hr>
+            <i>Author: <a href="/profile/{{recipe.author._id}}" class="link-dark text-decoration-none">{{this.username}}{{recipe.author.username}}</a></i>
+            <img src="{{recipe.recipePhoto}}" style="width:200px">
+        </div>
+    </div>
+</div>
+<br>
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Ingredients
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <ul>
+            {{#each recipe.ingredients}}
+                <li>{{this}}</li>
+            {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        Steps
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+          <ol>
+            {{#each recipe.steps}}
+                <li>{{this}}</li>
+            {{/each}}
+          </ol>
+      </div>
+    </div>
+  </div>
+{{#if showDelete}}
+<hr>
+<a class="btn btn-danger" href="/library/delete/{{recipe._id}}">Delete Pie</a>
+{{/if}}
 </div>
 {{#if showEdit}}
 <hr>
-<a href="/library/edit/{{recipe._id}}">Edit Pie</a>
+<a class="btn btn-warning mb-3" href="/library/edit/{{recipe._id}}">Edit Pie</a>
 {{/if}}
-<hr>
-<a href="/library">Back</a>
