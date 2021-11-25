@@ -31,9 +31,9 @@
         <img src="{{postPhoto}}" class="postPhoto">
         {{/if}}
         <br><div style="display: flex, align-items: center">
-        <a class="like-button" href="/feed/post/like/{{_id}}"><img class="like-hat" src="/images/welcome.png" alt=""></a> {{likeCount}}
+        <a class="like-button" href="/feed/post/like/{{_id}}"><img class="like-pie" src="/images/cartoon-pie.png" alt=""></a> {{likeCount}}
         <br>
-        <p>Liked by:{{#each likes}} <a href="/profile/{{this._id}}" class="link-dark text-decoration-none">{{this.username}}</a>, {{/each}}</p>
+        <p>Liked by:{{#each likes}}{{#if @last}} and <a href="/profile/{{this._id}}" class="link-dark text-decoration-none">{{this.username}}</a> {{else}} <a href="/profile/{{this._id}}" class="link-dark text-decoration-none">{{this.username}}</a>,{{/if}}{{/each}}</p>
         </div>
         <hr>
         <p>Comments</p>
