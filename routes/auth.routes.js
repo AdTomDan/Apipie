@@ -33,7 +33,7 @@ router.route("/") // LOGIN
       req.session.name = user.name;
       req.session._id = user._id;
       console.log(req.session)
-      res.redirect("/welcome")
+      res.redirect("/feed")
 		} 
 		else res.render('auth/login',{errorMessage:"Username/password incorrect."})
   } catch (err) {
