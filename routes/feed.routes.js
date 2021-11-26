@@ -14,19 +14,21 @@ router.route("/post/like/:id")
     const id = req.params.id
     const currentUser = req.session.loggedInUser
     let postToBeLiked = await Post.findById(id)
-    if (postToBeLiked.likes.length === 0) {
+    console.log("postToBeLiked: ", postToBeLiked)
+    /* if (postToBeLiked.likes.length === 0) {
         let likedPost = await Post.findByIdAndUpdate(id, {$push:{likes:currentUser._id}})
         let likedCount = await Post.findByIdAndUpdate(id, {$inc:{likeCount:1}})
         res.redirect("/feed")
-    }
-    else if (postToBeLiked.likes.includes(currentUser._id)) {
-        let unlikedPost = await Post.findByIdAndUpdate(id, {$pull:{likes:currentUser._id}})
-        let likedCount = await Post.findByIdAndUpdate(id, {$inc:{likeCount:-1}})
-        res.redirect("/feed")
+    } */
+    console.log("postToBeLiked.likes.includes(currentUser._id): ", postToBeLiked.likes.includes(currentUser._id))
+    if (postToBeLiked.likes.includes(currentUser._id)) {
+        let unlikedPost = await Post.findByIdAndUpdate(postToBeLiked._id, {$pull:{likes:currentUser._id}})
+        let likedCount = await Post.findByIdAndUpdate(postToBeLiked._id, {$inc:{likeCount:-1}})
+        res.redirect(`/feed/#${id}`)
     } else {
-        let likedPost = await Post.findByIdAndUpdate(id,{$push:{likes:currentUser._id}})
-        let likedCount = await Post.findByIdAndUpdate(id, {$inc:{likeCount:1}})
-        res.redirect("/feed")
+        let likedPost = await Post.findByIdAndUpdate(postToBeLiked._id,{$addToSet:{likes:currentUser._id}})
+        let likedCount = await Post.findByIdAndUpdate(postToBeLiked._id, {$inc:{likeCount:1}})
+        res.redirect(`/feed/#${id}`)
     }
     } catch (err) {
         console.log(err)
@@ -49,6 +51,7 @@ router.route("/connect")
 .get((req,res)=>{
     res.render("feed/connect",{userInfo:req.session.loggedInUser})
 })
+
 router.route("/connect-search")
 .get(async (req, res) => {
     try {
@@ -77,7 +80,7 @@ router.route("/connect/:id")
     const updatedCurrentUser = await User.findById(currentUser._id)
     req.session.loggedInUser = updatedCurrentUser
 
-    res.redirect("/feed/connect")
+    res.redirect(`/feed/connect`)
     } catch (err) {
         console.log(err)
     }
@@ -88,13 +91,12 @@ router.route("/disconnect/:id")
     try {
     const friendToUnFollow = req.params.id
     const currentUser = req.session.loggedInUser
-
     let unFollowFriend = await User.findByIdAndUpdate(currentUser._id,{$pull:{friends:friendToUnFollow}},{new:true})
     
     const updatedCurrentUser = await User.findById(currentUser._id)
     req.session.loggedInUser = updatedCurrentUser
 
-    res.redirect("/feed/connect")
+    res.redirect(`/feed/connect`)
     } catch (err) {
         console.log(err)
     }
