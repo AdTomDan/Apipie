@@ -1,9 +1,32 @@
 {{>navbar userInfo=userInfo}}
 
+<div class="container pt-1">
+  <div class="container recipe-search">
+    <form action="/library/search" method="GET">
+        <div class="input-group mb-4">             
+            <input type="text" style="border: 0px;" id="inputSearch" aria-describedby="button-addon5" class="form-control border" name="search" value="{{search}}" required>
+            <button id="button-addon5" style="border: 0px;" class="btn btn-light border" type="submit">🔎</button>
+        </div>
+    </form>
+</div>
+</div>
+  <div class="row text-center justify-content-center">
+    {{#each recipes}}
+      <div class="card p-1 m-2" style="width: 12rem;">
+      <a class="text-decoration-none text-dark" href="/library/details/{{this.id}}"><img src="{{this.recipePhoto}}" class="card-img-top" alt="{{this.name}}">
+      <div class="card-body">
+        <h5 class="card-title">{{this.name}} <hr>  </h5></a>
+        <p class="card-text mb-2">By: <a href="/profile/{{this.author._id}}" class="text-primary text-decoration-none">{{this.author.username}}</a></p>
+        <p class="card-text mb-2"> <em>Difficulty:</em>  <br>{{this.difficulty}}</p>
+        <p class="card-text"> <em> Flavour: </em> <br> {{this.flavour}}</p>
+        <a href="/library/details/{{this.id}}" class="btn btn-warning">See details</a>
+      </div>
+    </div>
+    {{/each}}
+</div>
 
-<h1>Results:</h1>
 
-
+<!--
 <ul class="recipe-list">
   {{#each recipes}}
     <li>
@@ -13,5 +36,4 @@
     </li>
   {{/each}}
 </ul>
-
-<a href="/library">Back</a>
+-->

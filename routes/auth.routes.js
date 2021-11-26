@@ -33,7 +33,7 @@ router.route("/") // LOGIN
       req.session.name = user.name;
       req.session._id = user._id;
       console.log(req.session)
-      res.redirect("/welcome")
+      res.redirect("/feed")
 		} 
 		else res.render('auth/login',{errorMessage:"Username/password incorrect."})
   } catch (err) {
@@ -47,14 +47,14 @@ router.route("/signup") //SIGN UP
 })
 .post( async (req,res)=>{
   try{
-    const {name,surname,username,email, password} = req.body
-    if(!name || !surname || !username|| !email || !password) res.render('auth/signup')
+    const {name,username,email, password} = req.body
+    if(!name || !username|| !email || !password) res.render('auth/signup')
     const user = await User.findOne({username}) 
     if(user) res.render('auth/signup',{errorMessage:"User exists."})
          // We can put here the extra validators to make a safe password 
     const salt = bcrypt.genSaltSync(saltRound)
     const hashedPwd = bcrypt.hashSync(password,salt)     
-    const newUser = await User.create({name,surname,username,email,password:hashedPwd})
+    const newUser = await User.create({name,username,email,password:hashedPwd})
     res.redirect("/auth")
   }
   catch (err){

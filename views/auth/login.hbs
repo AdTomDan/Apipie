@@ -1,20 +1,54 @@
-<div class="login-block">
-<img class="logo-img" src="/images/pie_image_login.png" alt="Cherry Pie Image"/>
-<a class="active" href="/"><img class="logo-img" src="/images/logo.png" alt="logo!"/></a>
+<div class="d-flex col justify-content-center">
+<div class="container d-flex justify-content-center position-absolute bg-dark">
+  <img
+    class="pie-img mw-500px position-absolute" style="margin-top: -45%; width: 50%"
+    src="/images/pie_image_login.png"
+    alt="Cherry Pie Image"
+  /></img>
+</div>
 
-<form class="loginForm" action="/auth" method="POST">
 
-  <label for="username">Username: </label>
-  <input type="text" name="username" placeholder="pepipalotes" required>
+  <main class="form-signin d-flex flex-column justify-content-center padding-signup-form">
 
-  <label for="password">Password: </label>
-  <input type="password" name="password" id="password" placeholder="🔒" required>
+    <form class="d-flex flex-column  justify-content-center loginForm w-90"  action="/auth" method="POST">
 
-  <button type="submit">Log in</button>
-</form>
-
-Feeling hungry? <a href="/auth/signup" style="color: blue;">Sign up</a>
-
+      <a class="active d-flex w-100 justify-content-center" href="/"><img style="width: 40%; padding-bottom: 2,5%;" 
+          class="logo-img"
+          src="/images/logo.png"
+          alt="logo!"
+        /></a>
+      <div class="form-floating mb-3">
+        <input
+          class="form-control w-100"
+          id="floatingInput"
+          type="text"
+          name="username"
+          placeholder="Surname"
+          required
+        />
+        <label for="floatingInput">Username</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          class="form-control w-100"
+          id="floatingPassword"
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Surname"
+          required
+        />
+        <label for="floatingPassword">Password</label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Log in</button>
+    </form>
+    <div class="d-flex flex-column w-100 align-items-center">
+    <p class="mb-0">Hungry and without an account?</p>
+    <a href="/auth/signup"><span class="text-primary p-1 mt-3">Sign up</span></a>
 {{#if errorMessage}}
-  <p>{{errorMessage}}</p>
+  <p class="btn btn-danger">{{errorMessage}}</p>
 {{/if}}
+  </main>
+    </div>
+
+</div>

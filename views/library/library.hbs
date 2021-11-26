@@ -1,30 +1,44 @@
 {{>navbar userInfo=userInfo}}
-
-
-<h1>Library</h1>
-
 <div>
-<h1>PIE OF THE WEEK: {{this.name}}</h1>
-<img src="https://tastesbetterfromscratch.com/wp-content/uploads/2015/10/Pumpkin-Pie-5-500x500.jpg" alt="Pumpkin Pie" width="150px" height="150px">
-</div>
-
-<form action="/library/search" method="GET">
-
-  <label for="search"></label>
-  <input type="text" name="search" placeholder="Search by keywords" required>
-  <button type="submit">🔎</button>
-
-</form>
-        <a href="/library/search?search=pie">All Pies</a> <hr>
-
-POPULAR FILTERS
-    <div>
-        <a href="/library/search?search=sweet">Sweet</a>
-        <a href="/library/search?search=butter">Butter</a>
-        <a href="/library/search?search=lactosefree">Lactose Free</a>
-    </div>
+<h1 class="d-flex justify-content-center"><a class="btn btn-success btn-xl btn-block" href="/library/create">Add Recipe</a></h1>
 <hr>
-
-<a href="/library/create">Create Recipe</a>
-<br>
-<a href="/welcome">Back</a>
+<div class="container recipe-search">
+    <form action="/library/search" method="GET">
+        <div class="input-group mb-4">             
+            <input type="text" id="inputSearch" aria-describedby="button-addon5" class="form-control border" name="search" placeholder="Search by keywords" required>
+            <button id="button-addon5" class="btn btn-light border" type="submit">🔎</button>
+        </div>
+    </form>
+</div>
+<hr>
+<div class="filters" style="width; 100%">
+<div class="row p-1 text-center">
+    <div class="col">
+        <a class="btn btn-light border border-1 border-info" style="width: 90%" href="/library/search?search=pie">All Pies <br> &#129383</a>
+    </div>
+    <div class="col">
+        <a class="btn btn-light border border-1 border-info" style="width: 90%" href="/library/search?search=pumpkin">Pumpkin <br> &#127875</a>
+    </div>
+    <div class="col">
+        <a class="btn btn-light border border1 border-info" style="width: 90%" href="/library/search?search=cherry">Cherry <br> &#127826</a>
+    </div>
+</div>
+<div class="row p-1 text-center">
+    <div class="col">
+        <a class="btn btn-light border border-1 border-info" style="width: 90%" href="/library/search?search=pork">Pork <br> &#129385</a>
+    </div>
+    <div class="col">
+        <a class="btn btn-light border border-1 border-info" style="width: 90%" href="/library/search?search=apple">Apple <br> &#127823</a>
+    </div>
+    <div class="col">
+        <a class="btn btn-light border border-1 border-info" style="width: 90%" href="/library/search?search=chocolate">Chocolate <br> &#127851</a>
+    </div>
+</div> 
+</div>   
+<hr>
+<div class="text-center">
+    <h5 class="mb-2">Pie of the week:</h5>
+    <h3 class="mt-0 p-2" style="background-color: #ffcc7b;">Glenda's Winter Pumpkin Pie </h3>
+    <img src="https://tastesbetterfromscratch.com/wp-content/uploads/2015/10/Pumpkin-Pie-5-500x500.jpg" class="rounded-circle" alt="Pumpkin Pie" width="150px" height="150px">
+</div>
+</div>

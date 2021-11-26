@@ -1,54 +1,60 @@
 {{>navbar userInfo=userInfo}}
 
-<h1>{{currentUser.name}}'s Feed - <a href="/feed/connect">Connect</a></h1>
+<div class="jumbotron text-center mt-3">
+  <h1 class="display-4">{{currentUser.name}}'s Feed</h1>
+  <p class="lead">Feeling hungry? If not you'll be soon....</p>
+  <hr class="my-4">
+  <p>Connect with your friends to see their posts!</p>
+  <p class="lead">
+    <a href="/feed/connect" class="btn btn-primary">Connect</a>
+  </p>
+</div>
 
-<form action="/feed" method="POST" style="border-style: solid; padding: 5px;" enctype="multipart/form-data" >
-<p>NEW POST:</p>
-    <label for="text">Text: </label>
-    <input type="text" name="text" placeholder="Text">
-    <br>
-    <br>
-    <label for="postPhoto"></label>
-    <input type="file" name="imgUrl"/>
-    <br>
-    <br>
-    <button type="submit">POST</button>
+<form action="/feed" method="POST" class="border border-2 p-2 bg-light feed-post d-flex flex-column" enctype="multipart/form-data">
+<div class="form-group">
+    <input type="text" class="form-control" id="text" aria-describedby="text" placeholder="Post" name="text">
+</div>
+<div class="mb-3">
+  <label for="formFile" class="form-label">Upload an Image</label>
+  <input class="form-control" type="file" id="formFile" name="imgUrl">
+</div>
+<button class="btn btn-warning" type="submit">Post</button>
 </form>
 
 <div class="allPosts">
     {{#each allPosts}}
-    <div class="post">
-        <h4><img src="{{user.profilePhoto}}" alt="{{user.username}}" width="25px" height="25px"> <a href="/profile/{{user._id}}">{{user.username}}</a></h4>
-        <i>{{formatDate createdAt}}</i>
+    <div class="post border border-2 p-3 mb-3 bg-light" id="{{this._id}}">
+        <h4><a href="/profile/{{user._id}}" class="link-dark text-decoration-none"><div class=" d-flex align-items-center"><img class="rounded-circle" style="margin-right: 10px;" src="{{user.profilePhoto}}" alt="{{user.username}}" width="30px" height="30px"> {{user.username}}</a></div></h4>
+        <i class="text-muted">{{formatDate createdAt}}</i>
         <p>{{text}}</p>
         {{#if postPhoto}}
-        <br>    
         <img src="{{postPhoto}}" class="postPhoto">
         {{/if}}
+        <br><div style="display: flex, align-items: center">
+        <a class="like-button" href="/feed/post/like/{{_id}}"><img class="like-pie" src="/images/cartoon-pie.png" alt=""></a> {{likeCount}}
         <br>
-        <a class="like-button" href="/feed/post/like/{{_id}}">&#128151</a> {{likeCount}}
-        <br>
-        <p>Liked by:{{#each likes}} <a href="/profile/{{this._id}}">{{this.username}}</a>, {{/each}}</p>
+        <!--         if likes <= 1            for each like, ie the 1 like it, has write the name                                                                   else it has > 1 like then if its the first like                                                          write the name           else   if its the last like add 'and'                                                                               otherwise its not the first or last, its in the middle, so write the name with a ' , '     -->
+        <p>Liked by:{{#checklength likes 1}}{{#each likes}} <a href="/profile/{{this._id}}" class="link-dark text-decoration-none">{{this.username}}</a>{{/each}}{{else}}{{#each likes}}{{#if @first}} <a href="/profile/{{this._id}}" class="link-dark text-decoration-none">{{this.username}}</a>, {{else}}{{#if @last}}and <a href="/profile/{{this._id}}" class="link-dark text-decoration-none">{{this.username}}</a>{{else}}<a href="/profile/{{this._id}}" class="link-dark text-decoration-none">{{this.username}}</a>, {{/if}}{{/if}}{{/each}}{{/checklength}}</p>
+        </div>
         <hr>
-        <p>COMMENTS: </p>
-        <ul>
+        <p>Comments</p>
+        <ul class="list-group list-group-flush">
             {{#each comments}}
-                <li>{{this.content}} - <a href="/profile/{{this.author._id}}"><i>{{this.author.name}}</i></a> <img width="20px" height="20px" src="{{this.author.profilePhoto}}" alt="{{this.author.name}}"></li>
+                <li class="list-group-item d-flex align-items-center" style=""><a href="/profile/{{this.author._id}}" class="link-dark text-decoration-none"><img width="30px" height="30px" class="rounded-circle" style="margin-right: 5px;" src="{{this.author.profilePhoto}}" alt="{{this.author.name}}"><strong>{{this.author.username}}</a></strong> &nbsp; {{this.content}}</li>
             {{/each}}
         </ul>
         <hr>
         <form class="comment-form" action="/feed/post/comment/{{_id}}" method="POST">
-            <label for="content"><img width="25px" height="25px" src="{{../userInfo.profilePhoto}}" alt=""></label>
-            <input type="text" name="content" placeholder="Comment">
-            <button type="submit">Post Comment</button>
-        </form>
-        
+          <div class="input-group">
+              <img src="{{../userInfo.profilePhoto}}" alt="" class="img-thumbnail" width="50px">
+              <input class="form-control" aria-label="With textarea" name="content" placeholder="Comment" style="resize: none">
+              <button class="btn btn-secondary ml-1" type="submit">Post</button>
+          </div>
         {{#ifEquals ../currentUser.username user.username}}
-            <a href="/feed/delete/{{_id}}">Delete</a>
+            <a href="/feed/delete/{{_id}}" class="btn btn-danger mt-2">Delete</a>
         {{/ifEquals}}
-
+        </form>
     </div>
   {{/each}}
 </div>
-
-<a href="/welcome">Back</a>
+<br>

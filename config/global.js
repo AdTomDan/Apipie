@@ -17,13 +17,22 @@ const hbs = require("hbs");
 
 hbs.registerHelper('formatDate', function(dateString) {
   return new hbs.SafeString(
-      moment(dateString).format("LLLL").toUpperCase()
+      moment(dateString).format("LLLL")
   );
 });
 
 hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
   return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
 });
+
+hbs.registerHelper('checklength', function (v1, v2, options) {
+  'use strict';
+     if (v1.length<=v2) {
+       return options.fn(this);
+    }
+    return options.inverse(this);
+  });
+
 
 // Middleware configuration
 module.exports = (app) => {

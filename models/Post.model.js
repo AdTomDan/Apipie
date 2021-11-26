@@ -6,16 +6,14 @@ const postSchema = new Schema({
 		ref: "User"
 	},
 	postPhoto: {
-		type: String,
-		required: true
+		type: String
     },
 	text: {
 		type: String
 	},
     likes: [{
 		type: Schema.Types.ObjectId,
-		ref: "User",
-		unique: true
+		ref: "User"
 	}],
 	likeCount: {type: Number},
     comments: [{

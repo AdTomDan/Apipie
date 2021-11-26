@@ -1,41 +1,85 @@
 {{>navbar userInfo=userInfo}}
 
-<div class="profile-header">
-        <img class="profilePhoto-in-profile"  src="{{user.profilePhoto}}" alt="Profile photo">
-    <div class="profile-text">
-        <h1>@{{user.username}}</h1>
-        <p>{{user.bio}}I started learning web dev but all I got from it was dispair, sadness and a frustration feeling. Then I tried pies and haven't looked back since then.</p>
-        <a href="/users/profile/edit/{{userInfo}}">Edit my profile</a>
+<div class="container profile-header d-flex flex-row w-100">
+    <img class="profilePhoto-in-profile img-thumbnail" style="width: 25vw; margin: 10px"  src="{{user.profilePhoto}}" alt="Profile photo">
+    <div class="profile-text" style="width: 50%">
+          <h1>@{{user.username}}{{#if editButton}}{{else}}{{#if areFriends}} <a href="/profile/disconnect/{{user._id}}" class="btn btn-danger btn-sm">Unfollow</a>{{else}} <a href="/profile/connect/{{user._id}}" class="btn btn-primary btn-sm">Follow</a>{{/if}}{{/if}}</h1>
+          <p>{{user.bio}}</p>
+          {{#if editButton}}
+          <a href="/users/profile/edit/{{userInfo._id}}" class="btn btn-success">Edit Profile</a>
+          {{/if}}
     </div>
 </div>
 <hr>
-<h2>Friends:</h2>
-{{#each user.friends}}
-    <p><img style="width: 20px;" src="{{this.profilePhoto}}" alt="{{this.username}} Profile Photo"> <a href="/profile/{{this._id}}">{{this.username}}</a> - {{this.name}} {{this.surname}}</p>
-{{/each}}
 
-<h2>Posts:</h2>
-{{#each userPosts}}
-    <div class="post" style="border: solid;">
-        <p>{{this.text}} - <i>{{formatDate this.createdAt}}</i></p>
-        {{#if this.image}}
-        <br>    
-        <img src="{{this.image}}" width="100px" height="100px">
-        {{/if}}
+
+
+{{!-- I hope you guys like this :) --}}
+
+  <div class="accordion" id="accordionPanelsStayOpenExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+        CONTACT LIST:
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+      <div class="accordion-body">
+        {{#each user.friends}}
+             <p><img class="rounded-circle" style="width: 40px;" src="{{this.profilePhoto}}" alt="{{this.username}} Profile Photo"> <a href="/profile/{{this._id}}" class="link-dark">{{this.username}}</a> - {{this.name}} {{this.surname}}</p>
+        {{/each}}
+      </div>
     </div>
-    <br>
-{{/each}}
-<h2>Recipes:</h2>
-{{#each userRecipes}}
-    <div class="post" style="border: solid;">
-        <p><a href="/library/details/{{this._id}}">{{this.name}}</a> - <i>{{this.createdAt}}</i></p>
-        {{#if this.imgUrl}}
-        <br>
-        <img src="{{this.imgUrl}}" width="100px" height="100px">
-        {{/if}}
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+        MY POSTS:
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+      <div class="accordion-body">
+        {{#each userPosts}}
+            <div class="post" style="">
+                <p><li>'{{this.text}}' - <i>{{formatDate this.createdAt}}</i></li></p>
+                <img class="w-100" src={{this.postPhoto}} alt="Photo">
+                {{#if this.postPhoto}}
+                <br>
+                {{/if}}
+            </div>
+            <br>
+        {{/each}}
+      </div>
     </div>
-    <br>
-{{/each}}
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+        MY RECIPES:
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+      <div class="accordion-body">
+        {{#each userRecipes}}
+            <div class="post" style="">
+                <p><li><a href="/library/details/{{this._id}}">{{this.name}}</a> - <i>{{formatDate this.createdAt}}</i></li></p>
+                {{#if this.imgUrl}}
+                <br>
+                <img src="{{this.imgUrl}}" width="100px" height="100px">
+                {{/if}}
+            </div>
+            <br>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+<br>
 
 
-<a href="/welcome">Back</a>
+
+
+
+
+
+

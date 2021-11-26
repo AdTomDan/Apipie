@@ -32,13 +32,12 @@ const recipeSchema = new Schema({
 	}],
 	recipePhoto: {
 		type: String,
-		required: true,
 		default: "https://thecrites.com/sites/all/modules/cookbook/theme/images/default-recipe-big.png"
 	},
 	servings: {
 		type: Number
 	},
-	taste: {
+	flavour: {
 		"type": String,
 		"enum": ["Sweet", "Savoury", "Other"]
 	}

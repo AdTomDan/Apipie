@@ -2,38 +2,44 @@
 
 <h1>Create New Recipe</h1>
 
-<form action="/library/create" method="POST" enctype="multipart/form-data" >
-
+<form action="/library/create" method="POST" enctype="multipart/form-data" class="border border-2 p-2 bg-light">
   <label for="name">Name: </label>
-  <input type="text" name="name" placeholder="Recipe Name" required>
-  <br>
-  <label for="recipePhoto"></label>
-  <input type="file" name="imgUrl"/>
-  <br>
-  <label for="prepTime">Prep Time: </label>
-  <input type="number" name="prepTime" placeholder="Minutes" required>
-  <br>
+  <input class="form-control" type="text" name="name" required />
+  <div class="form-group">
+    <div>
+    <label class="form-label" for="profilePhoto"></label>
+    <input class="form-control" type="file" id="formFile" name="imgUrl" required/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+  <label for="prepTime">Prep Time: </label>  
+  <input class="form-control" type="number" name="prepTime" placeholder="Minutes" required />
+</div>
+      <div class="col">
   <label for="cookingTime">Cooking Time: </label>
-  <input type="number" name="cookingTime" placeholder="Minutes" required>
-  <br>
+  <input class="form-control" type="number" name="cookingTime" placeholder="Minutes" required>
+    </div>
+  </div>
   <label for="difficulty">Difficulty:</label>
-  <br>
-  <select name="difficulty" id="difficulty">
+  <select class="form-select" name="difficulty" id="difficulty">
     <option value="Easy">Easy</option>
     <option value="Intermediate">Intermediate</option>
     <option value="Advanced">Advanced</option>
   </select>
-  <br>
+   <label for="flavour">Flavour:</label>
+  <select class="form-select" name="flavour" id="flavour">
+    <option value="Sweet">Sweet</option>
+    <option value="Savoury">Savoury</option>
+    <option value="Other">Other</option>
+  </select>
   <label for="ingredients">Ingredients: </label>
-  <input type="text" name="ingredients" placeholder="Ingredients" required>
-  <br>
+  <input class="form-control" type="text" name="ingredients" placeholder="Ingredients" required>
   <label for="steps">Steps: </label>
-  <input type="text" name="steps" placeholder="Steps" required>
+  <input class="form-control" type="text" name="steps" placeholder="Steps" required>
   <br>
-  <button type="submit">Create</button>
+  <button class="btn btn-primary" type="submit">Create</button>
 </form>
-
-<a href="/library">Back</a>
 
 {{#if errorMessage}}
   <p>{{errorMessage}}</p>

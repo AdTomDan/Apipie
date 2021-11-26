@@ -12,14 +12,14 @@ const { compareSync } = require("bcrypt");
 router.route("/details/:id").get(async (req, res) => {
   try {
     const id = req.params.id;
-    const recipe = await Recipe.findById(id).populate("author", "username");
-
+    const recipe = await Recipe.findById(id).populate("author");
     let showEdit = false;
     let showDelete = false;
     if (req.session.loggedInUser.username == recipe.author.username) {
       showEdit = true; // IF SESSION === AUTHOR, WE CREATE A VARIABLE TO DISPLAY "EDIT PIE" BUTTON
       showDelete = true;
     }
+
     res.render("library/details", { recipe, showEdit, showDelete,userInfo: req.session.loggedInUser });
   } catch (err) {
     console.log(err);
@@ -46,15 +46,11 @@ router
 
 router.route("/search").get(async (req, res) => {
   try {
-    console.log("heeeyy IM HEREEEE");
-    console.log(req.query);
     const {search} = req.query
-    console.log(search);
-    // const query = req.query.q1;
     const recipes = await Recipe.find({
       name: { $regex: search, $options: "i" },
     }).populate("author", "username");
-    res.render("library/list", { recipes,userInfo: req.session.loggedInUser});
+    res.render("library/list", { recipes,userInfo: req.session.loggedInUser,search});
   } catch (err) {
     console.log(err);
   }
@@ -74,11 +70,12 @@ router
         prepTime,
         cookingTime,
         difficulty,
+        flavour,
         ingredients,
         steps,
         recipePhoto,
       } = req.body;
-      let splitIngredients = ingredients.split(" ");
+      let splitIngredients = ingredients.split(", ");
       let splitSteps = steps.split("/");
 
       const newRecipe = await Recipe.create({
@@ -87,6 +84,7 @@ router
         prepTime,
         cookingTime,
         difficulty,
+        flavour,
         ingredients: splitIngredients,
         steps: splitSteps,
         recipePhoto: req.file.path,
@@ -105,6 +103,7 @@ router
     try {
       const id = req.params.id;
       const recipe = await Recipe.findById(id).populate("author", "username");
+      console.log("recipe is: ", recipe)
       res.render("library/edit-recipe", {
         recipe,
         userInfo: req.session.loggedInUser,
@@ -120,23 +119,26 @@ router
         prepTime,
         cookingTime,
         difficulty,
+        flavour,
         ingredients,
         steps,
         recipePhoto,
         _id,
       } = req.body;
-
-      const editedRecipe = await Recipe.update({
+      let splitIngredients = ingredients.split(", ");
+      let splitSteps = steps.split("/");
+      const editedRecipe = await Recipe.findByIdAndUpdate(req.params.id,{
         name,
         prepTime,
         cookingTime,
         difficulty,
-        ingredients,
-        steps,
+        flavour,
+        ingredients: splitIngredients,
+        steps: splitSteps,
         recipePhoto: req.file.path,
       });
       const id = req.params.id;
-      res.redirect(`/library/details/${id}`,{userInfo: req.session.loggedInUser});
+      res.redirect(`/library/details/${id}`);
     } catch (err) {
       console.log(err);
     }
@@ -146,7 +148,7 @@ router.route("/delete/:id").get(async (req, res) => {
   try {
     let deletedRecipe = await Recipe.findByIdAndDelete(req.params.id);
 
-    res.redirect("/library",{userInfo: req.session.loggedInUser});
+    res.redirect("/library");
   } catch (err) {
     console.log(err);
     res.render("/library",{userInfo: req.session.loggedInUser});
