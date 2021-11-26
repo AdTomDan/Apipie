@@ -1,13 +1,13 @@
 {{>navbar userInfo=userInfo}}
 
-<div class="container profile-header" style="display: flex; justify-content: space-evenly">
-        <img class="profilePhoto-in-profile img-thumbnail"  src="{{user.profilePhoto}}" alt="Profile photo">
-    <div class="profile-text" style="width: 52%">
-        <h1>@{{user.username}}{{#if editButton}}{{else}}{{#if areFriends}} <a href="/profile/disconnect/{{user._id}}" class="btn btn-danger btn-sm">Unfollow</a>{{else}} <a href="/profile/connect/{{user._id}}" class="btn btn-primary btn-sm">Follow</a>{{/if}}{{/if}}</h1>
-        <p>{{user.bio}}</p>
-        {{#if editButton}}
-        <a href="/users/profile/edit/{{userInfo._id}}" class="link-dark">Edit my profile</a>
-        {{/if}}
+<div class="container profile-header d-flex flex-row w-100">
+    <img class="profilePhoto-in-profile img-thumbnail" style="width: 25vw; margin: 10px"  src="{{user.profilePhoto}}" alt="Profile photo">
+    <div class="profile-text" style="width: 50%">
+          <h1>@{{user.username}}{{#if editButton}}{{else}}{{#if areFriends}} <a href="/profile/disconnect/{{user._id}}" class="btn btn-danger btn-sm">Unfollow</a>{{else}} <a href="/profile/connect/{{user._id}}" class="btn btn-primary btn-sm">Follow</a>{{/if}}{{/if}}</h1>
+          <p>{{user.bio}}</p>
+          {{#if editButton}}
+          <a href="/users/profile/edit/{{userInfo._id}}" class="btn btn-success">Edit Profile</a>
+          {{/if}}
     </div>
 </div>
 <hr>
