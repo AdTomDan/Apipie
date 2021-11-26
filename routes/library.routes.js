@@ -12,14 +12,14 @@ const { compareSync } = require("bcrypt");
 router.route("/details/:id").get(async (req, res) => {
   try {
     const id = req.params.id;
-    const recipe = await Recipe.findById(id).populate("author", "username");
-
+    const recipe = await Recipe.findById(id).populate("author");
     let showEdit = false;
     let showDelete = false;
     if (req.session.loggedInUser.username == recipe.author.username) {
       showEdit = true; // IF SESSION === AUTHOR, WE CREATE A VARIABLE TO DISPLAY "EDIT PIE" BUTTON
       showDelete = true;
     }
+
     res.render("library/details", { recipe, showEdit, showDelete,userInfo: req.session.loggedInUser });
   } catch (err) {
     console.log(err);

@@ -1,7 +1,7 @@
 {{>navbar userInfo=userInfo}}
 <div class="container">
             <h2>{{recipe.name}}</h2>
-            <a href="/profile/{{recipe.author._id}}" class="link-dark text-decoration-none"><i><img width="30px" height="30px" class="rounded-circle" style="margin-right: 5px;" src="{{userInfo.profilePhoto}}" alt="{{userInfo.name}}"> {{this.username}}{{recipe.author.username}}</a></i>
+            <a href="/profile/{{recipe.author._id}}" class="link-dark text-decoration-none"><i><img width="30px" height="30px" class="rounded-circle" style="margin-right: 5px;" src="{{recipe.author.profilePhoto}}" alt="{{recipe.author.username}}"> {{recipe.author.username}}</a></i>
             <hr>
     <div class="row">
         <div class="col p-2">
