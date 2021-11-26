@@ -13,8 +13,7 @@ const postSchema = new Schema({
 	},
     likes: [{
 		type: Schema.Types.ObjectId,
-		ref: "User",
-		unique: true
+		ref: "User"
 	}],
 	likeCount: {type: Number},
     comments: [{
