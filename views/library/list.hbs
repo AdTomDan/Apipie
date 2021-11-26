@@ -13,9 +13,9 @@
   <div class="row text-center justify-content-center">
     {{#each recipes}}
       <div class="card p-1 m-2" style="width: 12rem;">
-      <img src="{{this.recipePhoto}}" class="card-img-top" alt="{{this.name}}">
+      <a class="text-decoration-none text-dark" href="/library/details/{{this.id}}"><img src="{{this.recipePhoto}}" class="card-img-top" alt="{{this.name}}">
       <div class="card-body">
-        <h5 class="card-title">{{this.name}} <hr>  </h5>
+        <h5 class="card-title">{{this.name}} <hr>  </h5></a>
         <p class="card-text mb-2">By: <a href="/profile/{{this.author._id}}">{{this.author.username}}</a></p>
         <p class="card-text mb-2"> <em>Difficulty:</em>  <br>{{this.difficulty}}</p>
         <p class="card-text"> <em> Flavour: </em> <br> {{this.flavour}}</p>

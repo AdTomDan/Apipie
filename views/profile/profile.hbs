@@ -6,7 +6,7 @@
         <h1>@{{user.username}}{{#if editButton}}{{else}}{{#if areFriends}} <a href="/profile/disconnect/{{user._id}}" class="btn btn-danger btn-sm">Unfollow</a>{{else}} <a href="/profile/connect/{{user._id}}" class="btn btn-primary btn-sm">Follow</a>{{/if}}{{/if}}</h1>
         <p>{{user.bio}}</p>
         {{#if editButton}}
-        <a href="/users/profile/edit/{{userInfo._id}}">Edit my profile</a>
+        <a href="/users/profile/edit/{{userInfo._id}}" class="link-dark">Edit my profile</a>
         {{/if}}
     </div>
 </div>
@@ -26,7 +26,7 @@
     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
       <div class="accordion-body">
         {{#each user.friends}}
-             <p><img class="rounded-circle" style="width: 40px;" src="{{this.profilePhoto}}" alt="{{this.username}} Profile Photo"> <a href="/profile/{{this._id}}">{{this.username}}</a> - {{this.name}} {{this.surname}}</p>
+             <p><img class="rounded-circle" style="width: 40px;" src="{{this.profilePhoto}}" alt="{{this.username}} Profile Photo"> <a href="/profile/{{this._id}}" class="link-dark">{{this.username}}</a> - {{this.name}} {{this.surname}}</p>
         {{/each}}
       </div>
     </div>
