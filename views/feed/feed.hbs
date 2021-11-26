@@ -33,7 +33,8 @@
         <br><div style="display: flex, align-items: center">
         <a class="like-button" href="/feed/post/like/{{_id}}"><img class="like-pie" src="/images/cartoon-pie.png" alt=""></a> {{likeCount}}
         <br>
-        <p>Liked by:{{#each likes}}{{#if @last}} and <a href="/profile/{{this._id}}" class="link-dark text-decoration-none">{{this.username}}</a> {{else}} <a href="/profile/{{this._id}}" class="link-dark text-decoration-none">{{this.username}}</a>,{{/if}}{{/each}}</p>
+        <!--         if likes <= 1            for each like, ie the 1 like it, has write the name                                                                   else it has > 1 like then if its the first like                                                          write the name           else   if its the last like add 'and'                                                                               otherwise its not the first or last, its in the middle, so write the name with a ' , '     -->
+        <p>Liked by:{{#checklength likes 1}}{{#each likes}} <a href="/profile/{{this._id}}" class="link-dark text-decoration-none">{{this.username}}</a>{{/each}}{{else}}{{#each likes}}{{#if @first}} <a href="/profile/{{this._id}}" class="link-dark text-decoration-none">{{this.username}}</a>, {{else}}{{#if @last}}and <a href="/profile/{{this._id}}" class="link-dark text-decoration-none">{{this.username}}</a>{{else}}<a href="/profile/{{this._id}}" class="link-dark text-decoration-none">{{this.username}}</a>, {{/if}}{{/if}}{{/each}}{{/checklength}}</p>
         </div>
         <hr>
         <p>Comments</p>

@@ -62,6 +62,7 @@ router.route("/profile/disconnect/:id")
 router.route("/profile/:id").get(isLoggedIn, async (req, res) => {
   const user = await User.findById(req.params.id).populate("friends");
   const userPosts = await Post.find({ user: user._id }).sort({ createdAt: -1 });
+  console.log("userPosts: ",userPosts)
   const userRecipes = await Recipe.find({ author: user._id }).sort({
     createdAt: -1,
   });

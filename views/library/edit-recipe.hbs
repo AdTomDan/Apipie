@@ -23,6 +23,12 @@
     <option value="Intermediate">Intermediate</option>
     <option value="Advanced">Advanced</option>
   </select>
+  <label for="flavour">Flavour:</label>
+  <select class="form-select" name="flavour" id="flavour">
+    <option value="Sweet">Sweet</option>
+    <option value="Savoury">Savoury</option>
+    <option value="Other">Other</option>
+  </select>
   <label for="ingredients">Ingredients: </label>
   <input class="form-control" type="text" name="ingredients" value="{{#each recipe.ingredients}}{{#if @last}}{{this}}{{else}}{{this}}, {{/if}}{{/each}}" required>
   <label for="steps">Steps: </label>

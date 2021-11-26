@@ -25,6 +25,15 @@ hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
   return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
 });
 
+hbs.registerHelper('checklength', function (v1, v2, options) {
+  'use strict';
+     if (v1.length<=v2) {
+       return options.fn(this);
+    }
+    return options.inverse(this);
+  });
+
+
 // Middleware configuration
 module.exports = (app) => {
   // In development environment the app logs
