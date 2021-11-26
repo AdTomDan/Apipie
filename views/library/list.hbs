@@ -15,11 +15,11 @@
       <div class="card p-1 m-2" style="width: 12rem;">
       <img src="{{this.recipePhoto}}" class="card-img-top" alt="{{this.name}}">
       <div class="card-body">
-        <h5 class="card-title">{{this.name}}</h5>
-        <p class="card-text">By: <a href="/profile/{{this.author._id}}">{{this.author.username}}</a></p>
-        <p class="card-text">Difficulty: ·{{this.difficulty}}</p>
-        <p class="card-text">Flavour: {{this.flavour}}</p>
-        <a href="/library/details/{{this.id}}" class="btn btn-primary">See details</a>
+        <h5 class="card-title">{{this.name}} <hr>  </h5>
+        <p class="card-text mb-2">By: <a href="/profile/{{this.author._id}}">{{this.author.username}}</a></p>
+        <p class="card-text mb-2"> <em>Difficulty:</em>  <br>{{this.difficulty}}</p>
+        <p class="card-text"> <em> Flavour: </em> <br> {{this.flavour}}</p>
+        <a href="/library/details/{{this.id}}" class="btn btn-warning">See details</a>
       </div>
     </div>
     {{/each}}
