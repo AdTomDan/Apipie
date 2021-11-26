@@ -37,7 +37,7 @@ const recipeSchema = new Schema({
 	servings: {
 		type: Number
 	},
-	taste: {
+	flavour: {
 		"type": String,
 		"enum": ["Sweet", "Savoury", "Other"]
 	}
