@@ -1,8 +1,8 @@
 {{>navbar userInfo=userInfo}}
 
-<div class="profile-header">
+<div class="container profile-header" style="display: flex; justify-content: space-evenly">
         <img class="profilePhoto-in-profile img-thumbnail"  src="{{user.profilePhoto}}" alt="Profile photo">
-    <div class="profile-text">
+    <div class="profile-text" style="width: 52%">
         <h1>@{{user.username}}{{#if editButton}}{{else}}{{#if areFriends}} <a href="/profile/disconnect/{{user._id}}" class="btn btn-danger btn-sm">Unfollow</a>{{else}} <a href="/profile/connect/{{user._id}}" class="btn btn-primary btn-sm">Follow</a>{{/if}}{{/if}}</h1>
         <p>{{user.bio}}</p>
         {{#if editButton}}
@@ -42,9 +42,9 @@
         {{#each userPosts}}
             <div class="post" style="">
                 <p><li>'{{this.text}}' - <i>{{formatDate this.createdAt}}</i></li></p>
-                {{#if this.image}}
-                <br>    
-                <img src="{{this.image}}" width="100px" height="100px">
+                <img class="w-100" src={{this.postPhoto}} alt="Photo">
+                {{#if this.postPhoto}}
+                <br>
                 {{/if}}
             </div>
             <br>

@@ -10,7 +10,7 @@
   </p>
 </div>
 
-<form action="/feed" method="POST" class="border border-2 p-2 bg-light feed-post" enctype="multipart/form-data">
+<form action="/feed" method="POST" class="border border-2 p-2 bg-light feed-post d-flex flex-column" enctype="multipart/form-data">
 <div class="form-group">
     <input type="text" class="form-control" id="text" aria-describedby="text" placeholder="Post" name="text">
 </div>
@@ -18,7 +18,7 @@
   <label for="formFile" class="form-label">Upload an Image</label>
   <input class="form-control" type="file" id="formFile" name="imgUrl">
 </div>
-<button class="btn btn-secondary" type="submit">Post</button>
+<button class="btn btn-warning" type="submit">Post</button>
 </form>
 
 <div class="allPosts">
@@ -39,7 +39,7 @@
         <p>Comments</p>
         <ul class="list-group list-group-flush">
             {{#each comments}}
-                <li class="list-group-item d-flex align-items-center"><a href="/profile/{{this.author._id}}" class="link-dark text-decoration-none"><img width="30px" height="30px" class="rounded-circle" style="margin-right: 5px;" src="{{this.author.profilePhoto}}" alt="{{this.author.name}}"><strong>{{this.author.username}}</a></strong> &nbsp; {{this.content}}</li>
+                <li class="list-group-item d-flex align-items-center" style=""><a href="/profile/{{this.author._id}}" class="link-dark text-decoration-none"><img width="30px" height="30px" class="rounded-circle" style="margin-right: 5px;" src="{{this.author.profilePhoto}}" alt="{{this.author.name}}"><strong>{{this.author.username}}</a></strong> &nbsp; {{this.content}}</li>
             {{/each}}
         </ul>
         <hr>

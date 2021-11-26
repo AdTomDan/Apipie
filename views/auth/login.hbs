@@ -1,4 +1,4 @@
-<div class="d-flex col h-100 justify-content-center">
+<div class="d-flex col justify-content-center">
 <div class="container d-flex justify-content-center position-absolute bg-dark">
   <img
     class="pie-img mw-500px position-absolute" style="margin-top: -45%; width: 50%"
@@ -6,15 +6,13 @@
     alt="Cherry Pie Image"
   /></img>
 </div>
-<div
-  class="container login-block text-center d-flex justify-content-center align-items-center h-100"
->
 
-  <main class="form-signin d-flex flex-column justify-content-center">
 
-    <form class="d-flex flex-column loginFormalign-items-center" style="height: 50%" action="/auth" method="POST">
+  <main class="form-signin d-flex flex-column justify-content-center padding-signup-form">
 
-      <a class="active"href="/"><img style="width: 60%" 
+    <form class="d-flex flex-column  justify-content-center loginForm w-90"  action="/auth" method="POST">
+
+      <a class="active d-flex w-100 justify-content-center" href="/"><img style="width: 40%; padding-bottom: 2,5%;" 
           class="logo-img"
           src="/images/logo.png"
           alt="logo!"
@@ -44,13 +42,13 @@
       </div>
       <button class="w-100 btn btn-lg btn-primary" type="submit">Log in</button>
     </form>
-
-    Hungry and without an account?
+    <div class="d-flex flex-column w-100 align-items-center">
+    <p class="mb-0">Hungry and without an account?</p>
     <a href="/auth/signup"><span class="text-primary p-1 mt-3">Sign up</span></a>
-
-  </main>
-</div>
 {{#if errorMessage}}
-  <p>{{errorMessage}}</p>
+  <p class="btn btn-danger">{{errorMessage}}</p>
 {{/if}}
+  </main>
+    </div>
+
 </div>
